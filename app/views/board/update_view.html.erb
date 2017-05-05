@@ -1,0 +1,12 @@
+<h1>질문게시판</h1>
+
+<h3>수정 하기</h3>
+
+<form action="/update/<%= @upd_board.id%>" method="POST">
+    
+    이름 : <input type="text" name="input_name" value="<%= @upd_board.name %>">
+    <br><br>
+    내용 : <input type="text" name="input_contents" value="<%= @upd_board.contents %>">
+    <input type="submit" value="물어보기!">
+    
+</form>

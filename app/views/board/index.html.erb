@@ -1,0 +1,10 @@
+<h1>질문 게시판</h1>
+
+<% @myboard.each do |q| %>
+    질문 번호 : <%= q.id %> <br>
+    이름 : <%= q.name %> <br>
+    내용 : <%= q.contents %> <br>
+    <a href="/update_view/<%=q.id%>">[수정]</a>
+    <a href="/destroy/<%=q.id%>">[삭제]</a>
+    <hr>
+<% end %>
