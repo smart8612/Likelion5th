@@ -1,4 +1,4 @@
-<div id="donggukmap">
+<div id="donggukmap2">
     
     <div class="container nav">
         <!--개인정보 버튼(이후 구현)-->
@@ -7,7 +7,7 @@
         <!--new button-->
         <a href="/new"><button id="new" class="btn btn-default" type="submit">NEW</button></a>
         <!--dropdown box-->
-        <select class="form-control" style="width:20%; display:inline;">
+        <select id="category" class="form-control" style="width:20%; display:inline;">
           <option selected>CATEGORY</option>
           <option>음식</option>
           <option>스포츠</option>
@@ -19,9 +19,35 @@
 
 
     <div id="singong" class="gps" onclick="location.href='/simple'">
-      <p style="text-align:right; font-size: 1.5rem;"><b>1</b></p>
+      <p style="text-align:right; font-size: 1.5rem;"><b><span id="singongCount">0</span></b></p>
     </div>
     <div id="socialscience" class="gps" onclick="location.href='/simple'">
-      <p style="text-align:right; font-size: 1.5rem;"><b>2</b></p>
+      <p style="text-align:right; font-size: 1.5rem;"><b><span id="socialCount">0</span></b></p>
     </div>
 </div>
+
+<script>
+  $(document).ready(function()
+  {
+      $('#category').change(function(){
+          if($('#category').val()=="음식"){
+            $('#singongCount').text(<%= @countSinFood %>);
+            $('#socialCount').text(<%= @countSocialFood %>);
+          }
+          else if($('#category').val()=="스포츠"){
+            $('#singongCount').text(<%= @countSinSport %>);
+            $('#socialCount').text(<%= @countSocialSport %>);
+          }
+          else if($('#category').val()=="스터디"){
+            $('#singongCount').text(<%= @countSinStudy %>);
+            $('#socialCount').text(<%= @countSocialStudy %>);
+          }
+          else {
+            $('#singongCount').text(0);
+            $('#socialCount').text(0);
+          }
+      });
+  });
+
+  $('#socialCount').text(<%= @count2 %>);
+</script>

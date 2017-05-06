@@ -13,19 +13,29 @@ html, body{
   background-position: center top;
 }
 
+#donggukmap2{
+  position: relative;
+  top:10%;
+  height:70%;
+  width:100%;
+  background-image: url(donggukmap2.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+
 .container.nav{
   top: 15px;
   text-align: right;
 }
 
 #singong{
-  top:0%;
-  left:50%;
+  top:4.9%;
+  left:51.3%;
 }
-
 #socialscience{
-  top:44%;
-  left:33%;
+  top:46.5%;
+  left:35.2%;
 }
 
 .gps{

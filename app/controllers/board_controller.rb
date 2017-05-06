@@ -1,5 +1,12 @@
 class BoardController < ApplicationController
   def index
+    @countSinFood = Post.where(["building_name = ? and category = ?", "신공학관", "음식"]).count 
+    @countSinSport = Post.where(["building_name = ? and category = ?", "신공학관", "스포츠"]).count 
+    @countSinStudy = Post.where(["building_name = ? and category = ?", "신공학관", "스터디"]).count 
+    
+    @countSocialFood = Post.where(["building_name = ? and category = ?", "사회과학관", "음식"]).count 
+    @countSocialSport = Post.where(["building_name = ? and category = ?", "사회과학관", "스포츠"]).count 
+    @countSocialStudy = Post.where(["building_name = ? and category = ?", "사회과학관", "스터디"]).count 
   end
 
   def new
