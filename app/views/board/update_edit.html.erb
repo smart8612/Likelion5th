@@ -1,0 +1,16 @@
+<h1>Meet another people (map)</h1>
+
+<hr><br>
+
+<form action="/update/<%= @data_show.id %>" method="POST">
+    
+    날짜 : <input type="date" name="inputDate_upd" value="<%= @data_show.bookdate %>"><br>
+    시간 : <input type="time" name="inputTime_upd" value="<%= @data_show.booktime %>"><br>
+    장소 : <input type="text" name="inputPlace_upd" value="<%= @data_show.bookplace %>"><br>
+    인원 : <input type="text" name="inputPeople_upd" value="<%= @data_show.bookpeople %>"><br>
+    소개 : <input type="text" name="inputText_upd" value="<%= @data_show.booktext %>"><br>
+    카테고리 : <input type="text" name="inputCategory_upd" value="<%= @data_show.category %>"><br>
+    건물 이름 : <input type="text" name="inputBuilding_name_upd" value="<%= @data_show.building_name %>"><br>
+    <button type="submit">저장하기</button>
+    
+</form>

@@ -1,0 +1,27 @@
+<div id="donggukmap">
+    
+    <div class="container nav">
+        <!--개인정보 버튼(이후 구현)-->
+        <div id="privateInfo">
+        </div>
+        <!--new button-->
+        <a href="/new"><button id="new" class="btn btn-default" type="submit">NEW</button></a>
+        <!--dropdown box-->
+        <select class="form-control" style="width:20%; display:inline;">
+          <option selected>CATEGORY</option>
+          <option>음식</option>
+          <option>스포츠</option>
+          <option>스터디</option>
+        </select>
+        
+        <a href="/join"><button id="join" class="btn btn-default" type="submit">JOIN</button></a>
+    </div>
+
+
+    <div id="singong" class="gps" onclick="location.href='/simple'">
+      <p style="text-align:right; font-size: 1.5rem;"><b>1</b></p>
+    </div>
+    <div id="socialscience" class="gps" onclick="location.href='/simple'">
+      <p style="text-align:right; font-size: 1.5rem;"><b>2</b></p>
+    </div>
+</div>

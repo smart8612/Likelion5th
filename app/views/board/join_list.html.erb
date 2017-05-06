@@ -1,0 +1,15 @@
+<div class="row justify-content-center " style="margin-top: 50px; margin-bottom: 50px;">
+    <h1>회원가입 정보 목록 입니다.</h1>
+</div>
+<% @individual_list.each do |i| %>
+    이름: <%= i.myname %><br>
+    이메일: <%= i.email %><br>
+    닉네임: <%= i.nickname %><br>
+    비밀번호: <%= i.password %><br>
+    전화번호: <%= i.phonenumber %><br>
+    직종분류: <%= i.jobcategory %> <br>
+    관심카테고리1: <%= i.interest1 %><br>
+    관심카테고리2: <%= i.interest2 %><br>
+    관심카테고리3: <%= i.interest3 %><br>
+    <hr>
+<% end %>

@@ -1,0 +1,76 @@
+<div class="container">
+    <div class="row justify-content-center ">
+        <div class="col-4" style="margin-top:50px; margin-bottom:70px;">
+          <h2>Map 회원가입</h2>
+        </div>
+    </div>
+    <form action ='/join_write' method="POST">
+        <!--이름 입력칸-->
+      <div class="form-group">  
+        <label for="InputmyName">Name *</label> 
+        <input type="text" name="myname" class="form-control" id="InputmyName" aria-describedby="mynameHelp" placeholder="이름을 입력하세요.">
+      </div>
+        <!--이메일 입력칸-->
+      <div class="form-group">
+        <label for="InputEmail">Email Address *</label>
+        <input type="email" name="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="이메일 주소를 입력하세요.">
+      </div>
+        <!--닉네임 입력칸-->
+      <div class="form-group">
+        <label for="InputNickName">NickName</label>
+        <input type="text" name="nickname" class="form-control" id="InputNickName" aria-describedby="nicknameHelp" placeholder="닉네임을 입력하세요.">
+        <small id="nicknameHelp" class="form-text text-muted">이름 대신 사용하실 닉네임입니다.</small>
+      </div>
+       <!--비밀번호 입력칸-->
+      <div class="form-group">
+        <label for="InputPassword">Password *</label>
+        <input type="password" name="password" class="form-control" id="InputPassword" placeholder="비밀번호를 입력하세요.">
+      </div>
+       <!--전화번호 입력칸-->    
+      <div class="form-group">
+        <label for="InputTel">PhoneNumber *</label>
+        <input type="tel" name="phonenumber" class="form-control" id="InputTel" placeholder="휴대폰 번호를 입력하세요.">
+      </div>
+       <!--직종분류 입력칸-->
+      <fieldset class="jobcategory">
+        <legend>직종 분류 *</legend>
+        <div class="form-check" style="margin-left: 20px;">
+          <label class="Student">
+            <input type="radio" class="form-check-input" name="jobcategory" id="Student" value="student" checked>
+            학생
+          </label>
+          <label class="Professor"style="margin-left: 20px;">
+            <input type="radio" class="form-check-input" name="jobcategory" id="Professor" value="professor">
+            교수
+          </label>
+          <label class="Extra-job"style="margin-left: 20px;">
+            <input type="radio" class="form-check-input" name="jobcategory" id="Extra-job" value="extra-job">
+            기타
+          </label>
+        </div>
+      </fieldset>
+    <!--관심 카테고리-->
+      <div class="interestselect">
+          <legend>관심 카테고리</legend>
+          <select class="selectinterest1" name="interest1" id="interest1" style="margin-right: 20px;">
+            <option selected>첫번째 관심 카테고리</option>
+            <option value="food">음식</option>
+            <option value="sport">스포츠</option>
+            <option value="study">스터디</option>
+          </select>
+          <select class="selectinterest2" name="interest2" id="interest2" style="margin-right: 20px;">
+            <option selected>두번째 관심 카테고리</option>
+            <option value="food">음식</option>
+            <option value="sport">스포츠</option>
+            <option value="study">스터디</option>
+          </select>
+          <select class="selectinterest3" name="interest3" id="interest3">
+            <option selected>세번째 관심 카테고리</option>
+            <option value="food">음식</option>
+            <option value="sport">스포츠</option>
+            <option value="study">스터디</option>
+          </select>
+      </div>
+      <button type="submit" class="btn btn-primary" style="margin-top:80px; margin-bottom:100px; margin-left:500px;">가입</button>
+    </form>
+</div>
