@@ -1,5 +1,8 @@
 <form>
-    제목       : <input type="text" name="inputTitle" value="<%= @data_show.title %>"><br><br>
-    작성자     : <input type="text" name="inputEditor" value="<%= @data_show.editor %>"><br><br>
-    내용       : <input type="text" name="inputContent" value="<%= @data_show.content %>"><br><br>
+    제목       : <%= @data_show.title %><br><br>
+    작성자     : <%= @data_show.editor %><br><br>
+    내용       : <%= @data_show.content %><br><br>
+    
+    <a href="/edit/<%= @data_show.id %>">[수정]</a>
+    <a href="/delete/<%= @data_show.id %>">[삭제]</a><hr><br>
 </form>

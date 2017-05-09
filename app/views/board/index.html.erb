@@ -1,12 +1,14 @@
 <h1>정택의 게시판</h1>
 <hr>
-<a href="/new">글쓰러 가기!</a>
+
+<form action="/new" method="GET">
+    <button href="/new">New</button>
+</form>
+        
 <h3>게시글</h3>
 <br>
 <% @data_text.each do |x| %>
     제목    :<a href="/show/<%= x.id %>"><%= x.title %></a>
-    작성자  :<%= x.editor %>
-    <a href="/edit/<%= x.id %>">[수정]</a>
-    <a href="/delete/<%= x.id %>">[삭제]</a><hr><br>
+    작성자  :<%= x.editor %><br><hr>
 <% end %>
 

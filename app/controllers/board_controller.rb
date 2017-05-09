@@ -6,10 +6,7 @@ class BoardController < ApplicationController
   def show
     @data_show = Post.find(params[:board_id])
  
-    respond_to do |format|
-    format.html # show.html.erb
-    format.xml  { render :xml => @post }
-    end
+    
   end
 
   def new
