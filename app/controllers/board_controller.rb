@@ -5,7 +5,7 @@ class BoardController < ApplicationController
 
   def show
     @data_show = Post.find(params[:board_id])
- 
+    @comment_show = Reply.all
     
   end
 

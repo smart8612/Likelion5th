@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170505123806) do
+ActiveRecord::Schema.define(version: 20170512132234) do
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
@@ -20,5 +20,15 @@ ActiveRecord::Schema.define(version: 20170505123806) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "replies", force: :cascade do |t|
+    t.integer  "post_id"
+    t.string   "dbEditor"
+    t.text     "dbContent"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "replies", ["post_id"], name: "index_replies_on_post_id"
 
 end
