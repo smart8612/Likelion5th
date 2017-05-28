@@ -2,9 +2,10 @@
 <hr>
 <h3>새로 작성하기</h3>
 
-<form action="/create" method="POST">
+<form action="/create" method="POST" enctype="multipart/form-data">
     제목       : <input type="text" name="inputTitle"><br><br>
-    작성자     : <input type="text" name="inputEditor"><br><br>
+    작성자     : <input type="text" name="inputEditor" value="<%= current_user.email %>" readonly="readonly"/><br><br>
     내용       : <input type="text" name="inputContent"><br><br>
+    이미지 파일 첨부 : <input type="file" name="imageFile" accept="image/*">
     <button type="submit">저장하기</button>
 </form>

@@ -5,7 +5,9 @@ class CreateReplies < ActiveRecord::Migration
       t.string  :dbEditor
       t.text    :dbContent
       t.integer :post_id
-
+      
+      t.references :user, foreign_key: true
+      
       t.timestamps null: false
     end
   end

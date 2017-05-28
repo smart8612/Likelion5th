@@ -1,4 +1,7 @@
 class BoardController < ApplicationController
+  
+  before_action :authenticate_user!, except: [:index, :show]
+  
   def index
     @data_text = Post.all
   end
@@ -10,6 +13,7 @@ class BoardController < ApplicationController
   end
 
   def new
+
   end
 
   def create
@@ -22,6 +26,13 @@ class BoardController < ApplicationController
     data.title = @titleResult
     data.editor = @editorResult
     data.content = @contentResult
+    data.user = current_user
+    
+    data_img = ImgUploaderUploader.new
+    data_img.store!(params[:imageFile])
+    
+    data.image = data_img
+    
     data.save
     
     redirect_to '/index'
@@ -54,4 +65,5 @@ class BoardController < ApplicationController
     redirect_to '/index'
     
   end
+
 end
