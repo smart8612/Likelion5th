@@ -2395,3 +2395,202 @@ Processing by BoardController#index as HTML
   [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
   Rendered board/index.html.erb within layouts/application (1.7ms)
 Completed 200 OK in 19ms (Views: 17.7ms | ActiveRecord: 0.3ms)
+  [1m[36m (17.5ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (12.2ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreatePosts (20170505123806)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "editor" varchar, "content" text, "image" varchar DEFAULT ' ', "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170505123806"]]
+  [1m[35m (14.3ms)[0m  commit transaction
+Migrating to CreateReplies (20170512150136)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "replies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "dbEditor" varchar, "dbContent" text, "post_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170512150136"]]
+  [1m[35m (14.6ms)[0m  commit transaction
+Migrating to DeviseCreateUsers (20170526060606)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (1.4ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36m (0.2ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20170526060606"]]
+  [1m[36m (13.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+
+
+Started GET "/" for 118.36.56.11 at 2017-05-28 10:12:09 +0000
+Cannot render console from 118.36.56.11! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by BoardController#index as HTML
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  Rendered board/index.html.erb within layouts/application (8.3ms)
+Completed 200 OK in 432ms (Views: 408.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/new" for 118.36.56.11 at 2017-05-28 10:12:11 +0000
+Cannot render console from 118.36.56.11! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BoardController#new as HTML
+Completed 401 Unauthorized in 10ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 118.36.56.11 at 2017-05-28 10:12:12 +0000
+Cannot render console from 118.36.56.11! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (20.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/devise-4.3.0/app/views/devise/sessions/new.html.erb within layouts/application (131.6ms)
+Completed 200 OK in 228ms (Views: 194.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/sign_up" for 118.36.56.11 at 2017-05-28 10:12:14 +0000
+Cannot render console from 118.36.56.11! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/devise-4.3.0/app/views/devise/shared/_links.html.erb (3.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/devise-4.3.0/app/views/devise/registrations/new.html.erb within layouts/application (11.9ms)
+Completed 200 OK in 47ms (Views: 45.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 118.36.56.11 at 2017-05-28 10:12:20 +0000
+Cannot render console from 118.36.56.11! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"i2y1sHLEox4I4cSfQWgd7jfodi7wSeORiWc/DoI0ASfhcvu9lJZb437K5m/tDg37iB2gTV0PO5I4tlqcgozaIQ==", "user"=>{"email"=>"a@a.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'a@a.com' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "a@a.com"], ["encrypted_password", "$2a$11$5S899a/gHXS3PMvSnVuJdeCCCQE6CI3RQjY3STBtNuyRpMlTaJmpy"], ["created_at", "2017-05-28 10:12:20.950272"], ["updated_at", "2017-05-28 10:12:20.950272"]]
+  [1m[35m (10.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["last_sign_in_at", "2017-05-28 10:12:20.963763"], ["current_sign_in_at", "2017-05-28 10:12:20.963763"], ["last_sign_in_ip", "118.36.56.11"], ["current_sign_in_ip", "118.36.56.11"], ["sign_in_count", 1], ["updated_at", "2017-05-28 10:12:20.964685"], ["id", 1]]
+  [1m[36m (11.2ms)[0m  [1mcommit transaction[0m
+Redirected to https://crud-prtc-smart8612.c9users.io/new
+Completed 302 Found in 226ms (ActiveRecord: 22.6ms)
+
+
+Started GET "/new" for 118.36.56.11 at 2017-05-28 10:12:21 +0000
+Cannot render console from 118.36.56.11! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BoardController#new as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered board/new.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 18ms (Views: 15.7ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/create" for 118.36.56.11 at 2017-05-28 10:12:42 +0000
+Cannot render console from 118.36.56.11! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BoardController#create as HTML
+  Parameters: {"inputTitle"=>"제목입니다", "inputEditor"=>"a@a.com", "inputContent"=>"내용입니다", "imageFile"=>#<ActionDispatch::Http::UploadedFile:0x007fd192483f58 @tempfile=#<Tempfile:/tmp/RackMultipart20170528-6013-xkiiwu.png>, @original_filename="anaconda-icon-512x512.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"imageFile\"; filename=\"anaconda-icon-512x512.png\"\r\nContent-Type: image/png\r\n">}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("title", "editor", "content", "user_id", "image", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "제목입니다"], ["editor", "a@a.com"], ["content", "내용입니다"], ["user_id", 1], ["image", "/uploads/1495966363_epdinchr.png"], ["created_at", "2017-05-28 10:12:43.006502"], ["updated_at", "2017-05-28 10:12:43.006502"]]
+  [1m[35m (11.1ms)[0m  commit transaction
+Redirected to https://crud-prtc-smart8612.c9users.io/index
+Completed 302 Found in 37ms (ActiveRecord: 11.8ms)
+
+
+Started GET "/index" for 118.36.56.11 at 2017-05-28 10:12:43 +0000
+Cannot render console from 118.36.56.11! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BoardController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts"
+  Rendered board/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 18ms (Views: 16.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/show/1" for 118.36.56.11 at 2017-05-28 10:12:45 +0000
+Cannot render console from 118.36.56.11! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BoardController#show as HTML
+  Parameters: {"board_id"=>"1"}
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mReply Load (0.2ms)[0m  [1mSELECT "replies".* FROM "replies" WHERE "replies"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered board/show.html.erb within layouts/application (20.5ms)
+Completed 200 OK in 40ms (Views: 33.4ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/reply_create" for 118.36.56.11 at 2017-05-28 10:12:51 +0000
+Cannot render console from 118.36.56.11! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by CommentController#reply_create as HTML
+  Parameters: {"reply_id"=>"1", "inputEditor"=>"a@a.com", "inputReply"=>"댓글입니다"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "replies" ("dbEditor", "dbContent", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["dbEditor", "a@a.com"], ["dbContent", "댓글입니다"], ["post_id", 1], ["created_at", "2017-05-28 10:12:51.493556"], ["updated_at", "2017-05-28 10:12:51.493556"]]
+  [1m[35m (11.5ms)[0m  commit transaction
+Redirected to https://crud-prtc-smart8612.c9users.io/show/1
+Completed 302 Found in 38ms (ActiveRecord: 12.3ms)
+
+
+Started GET "/show/1" for 118.36.56.11 at 2017-05-28 10:12:51 +0000
+Cannot render console from 118.36.56.11! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BoardController#show as HTML
+  Parameters: {"board_id"=>"1"}
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mReply Load (0.1ms)[0m  [1mSELECT "replies".* FROM "replies" WHERE "replies"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered board/show.html.erb within layouts/application (6.1ms)
+Completed 200 OK in 31ms (Views: 28.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/reply_delete/1" for 118.36.56.11 at 2017-05-28 10:13:01 +0000
+Cannot render console from 118.36.56.11! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by CommentController#reply_delete as HTML
+  Parameters: {"reply_id"=>"1"}
+  [1m[35mReply Load (0.3ms)[0m  SELECT  "replies".* FROM "replies" WHERE "replies"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "replies" WHERE "replies"."id" = ?  [["id", 1]]
+  [1m[36m (128.9ms)[0m  [1mcommit transaction[0m
+Redirected to https://crud-prtc-smart8612.c9users.io/show/1
+Completed 302 Found in 133ms (ActiveRecord: 129.7ms)
+
+
+Started GET "/show/1" for 118.36.56.11 at 2017-05-28 10:13:02 +0000
+Cannot render console from 118.36.56.11! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BoardController#show as HTML
+  Parameters: {"board_id"=>"1"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mReply Load (0.1ms)[0m  SELECT "replies".* FROM "replies" WHERE "replies"."post_id" = ?  [["post_id", 1]]
+  Rendered board/show.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 19ms (Views: 17.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/delete/1" for 118.36.56.11 at 2017-05-28 10:13:03 +0000
+Cannot render console from 118.36.56.11! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BoardController#delete as HTML
+  Parameters: {"board_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "posts" WHERE "posts"."id" = ?  [["id", 1]]
+  [1m[36m (11.4ms)[0m  [1mcommit transaction[0m
+Redirected to https://crud-prtc-smart8612.c9users.io/index
+Completed 302 Found in 22ms (ActiveRecord: 12.0ms)
+
+
+Started GET "/index" for 118.36.56.11 at 2017-05-28 10:13:03 +0000
+Cannot render console from 118.36.56.11! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by BoardController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  Rendered board/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 23ms (Views: 21.6ms | ActiveRecord: 0.4ms)
