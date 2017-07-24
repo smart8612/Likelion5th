@@ -1,0 +1,44 @@
+<div class="banner">
+    <div>
+        banner text
+    </div>
+</div>
+
+<div class ="post_disp"> <!--post display 게시물이 로드되는 부분입니다.-->
+    <!--each do 문을 사용해 포스트를 불러옵니다-->
+    <div class="post_box">
+        <div><!--포스트 제목-->
+            <span class ="ptitle">
+                <%= @this_post.post_title%>
+            </span>
+            <span><%= @this_post.created_at %> | <%= @this_post.post_editor%></span>
+        </div>
+        <div class ="content_box"></div>
+        <div class ="img_box"><%= image_tag("flowers.jpg", size: "600") %></div>
+        <div class ="tag">
+            <span>Tags: post tags</span>
+        </div>
+        <div class="sns_icons"></div>
+    <!--포스트 끝-->
+        <div class="comments"><!--댓글창-->
+            <span>댓글 0개</span>
+            <span>정렬기준</span>
+            <hr>
+            <span>pic</span>
+            <form action = "/comment_create" method="POST">
+                <div class="commenter_pic"><%= image_tag("pastel_sky.jpg", size: "30") %></div>
+                <input type="hidden" name="input_comment_editor"/><br><!--댓글이 로드되는 부분입니다-->
+                <input type="text" class="comment_input" name="input_comment_content"/><br>
+                <button type="submit" class="comment_button">댓글작성</button><br>
+            </form>
+            <hr>
+            <div class="comment_disp"><!--댓글이 로드되는 부분입니다-->
+                <% @comments.each do |c| %>
+                        <%= c.comment_editor %><br>
+                        <%= c.comment_content %><br>
+                <%end%>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
