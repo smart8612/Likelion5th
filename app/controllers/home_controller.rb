@@ -21,9 +21,35 @@ class HomeController < ApplicationController
     #모든 댓글 불러옴
     @comments = Comment.all
   end
+  #mylist controller action start: Myounghee Seo
+  def mylist_model
+    
+    #mylist의 model 데이터 대입 
+      
+    mylist = Mylist.new 
+    mylist.goal = params[:goal]
+    mylist.complete = params[:complete]
+      
+    mylist.save
+    
+    redirect_to "/mylist"
+  end
   
   def mylist
+    
+    @mylist = Mylist.all
+    
   end
+  
+  def mylist_delete
+  
+    mylist = Mylist.find(params[:mylist_id])
+    mylist.destroy
+    
+    redirect_to '/mylist'
+    
+  end
+#mylist action end
 
 # Post CRUD 액션 (Read 제외) : 한재원
   def write

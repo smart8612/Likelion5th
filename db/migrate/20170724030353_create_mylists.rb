@@ -3,6 +3,7 @@ class CreateMylists < ActiveRecord::Migration
     create_table :mylists do |t|
       
       t.string  :goal
+      t.integer :complete
       t.string  :editor
       t.integer :user_id
 
