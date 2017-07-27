@@ -5,18 +5,109 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <!--부트스트랩 모바일 반응형을 위한 meta 태그-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--부트스트랩-->
 </head>
 <body>
-<div class="profile_sec">
-  <div class="profile_pic"></div>
-  <div class="profile_text"></div>
-  <div class="list_min"></div>
-</div>
-<div class="nav_bar">
-  
-</div>
+<!--header-->
+<header>
+  <div class="container">
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <a class="navbar-brand" href="/">BucketList</a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto my-auto">
+          <li class="nav-item mx-3">
+            <a class="nav-link" href="/mylist">MY LIST</a>
+          </li>
+          <li class="nav-item mx-3">
+            <a class="nav-link" href="/write">WRITE</a>
+          </li>
+          <li class="nav-item mx-3 dropdown active">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              FEED
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#">FRIEND'S</a>
+              <a class="dropdown-item" href="#">RANDOM</a>
+            </div>
+          </li>
+          <li class="nav-item mx-3">
+            <a class="nav-link" href="#">YEARLY</a>
+          </li>
+          <li class="nav-item mx-3">
+            <a class="nav-link" href="#">FRIEND</a>
+          </li>
+        </ul>
+        <a class="btn btn-info my-2" href="/home_logout" role="button">Logout</a>
+      </div>
+    </nav>
+  </div>
+</header>
+<!--header-->
 
-<%= yield %>
+<div class="container-fluid">
+  <div class="row">
+    <!--profile section-->
+      <div class="col-md-3">
+        <aside>
+          <div class="profile_section py-4 my-1">
+              <div>
+                <img src="http://cfile28.uf.tistory.com/image/265D634852CD1F30178C8B" class="rounded mx-auto d-block profile_image" alt="user_profile_image">
+              </div>
+              <div class="profile_name">
+                이두희
+              </div>
+              <div class="profile_bitrhday">
+                1983년07월16일
+              </div>
+              <div class="profile_button">
+                <a class="btn btn-outline-primary" href="/list_update" role="button">목표 추가하기</a>
+              </div>
+              <div>
+                <table class="goal_graph mx-auto">
+                  <tr>
+                    <th>
+                      <svg width="16" height="150">
+                        <rect width="16" height="150" style="fill:#4286f4;"/>
+                      </svg>
+                    </th>
+                    <th>
+                      <ul>
+                        <li>서울대 입학하기</li>
+                        <li>서울대 전산망 해킹하기</li>
+                        <li>김태희 사진 찾기</li>
+                        <li>멋쟁이사자처럼 만들기</li>
+                        <li>콩두컴퍼니 만들기</li>
+                      </ul>
+                    </th>
+                  </tr>
+                </table>
+              </div>
+          </div>
+        </aside>
+      </div>
+    <!--profile section-->
+
+    <!--post section-->
+      <div class="col-md-9 my-1">
+        <section>
+          <article>
+            <div class="post_section">
+                <%=yield%>
+            </div>
+          </article>
+        </section>
+      </div>
+    <!--post section-->
+  </div>
+</div>
+<footer>
+  
+</footer>
 
 </body>
 </html>

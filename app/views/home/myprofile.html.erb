@@ -3,18 +3,18 @@
         banner text
     </div>
 </div>
-
+<!--수정/ 삭제버튼 추가-->
 <div class ="post_disp"> <!--post display 게시물이 로드되는 부분입니다.-->
     <!--each do 문을 사용해 전체 포스트를 불러옵니다-->
     <div class="post_box">
     <% @posts.each do |p| %>
         <div><!--포스트 제목-->
-            <a href="#"><span class="ptitle"><%= p.post_title %></span></a><br>
-            <span><%= p.created_at.strftime("%Y-%m-%d") %> | <%= p.post_editor%></span>
+            <a href='post_show/<%= p.id %>'><span class="ptitle"><%= p.title %></span></a><br>
+            <span><%= p.created_at.strftime("%Y-%m-%d") %> | <%= p.editor%></span>
         <div class ="img_box"> <a href="#">image</a></div>
         <div class ="content_box">
-            <%= p.post_content%>
-            <a href="#"><span>>>>자세히 보기</span></a>    
+            <%= p.content%>
+            <a href='post_show/<%= p.id %>'><span>>>>자세히 보기</span></a>    
         </div>
         <div class ="button"></div>
         <hr>

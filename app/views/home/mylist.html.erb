@@ -1,18 +1,22 @@
+<a href= "/">home</a>
 <h1>리스트 페이지</h1>
 <h1>2017년</h1>
-
-<% @mylist.each do |m| %>
-    Main Goal : <%= m.goal %> &nbsp;&nbsp;&nbsp;&nbsp; 성취율에 포함 : <%= m.complete %>&nbsp;<a href= "/mylist_delete/<%=m.id%>">[삭제]</a>
+<div class="mylist">
+  <div class="mylist_list">
+    <% @mylist.each do |m| %>
+        Main Goal : <%= m.goal %> &nbsp;&nbsp;&nbsp;&nbsp; 성취율에 포함 : <%= m.complete %>&nbsp;<a href= "/mylist_delete/<%=m.id%>">[삭제]</a>
+        <hr>
+    <% end %>
     <br>
-<% end %>
-<br>
-<form action="/mylist_model" method="POST">
-  <div class="mylist">
-    <label for="goal_input">Main Goal</label>
-    <input type="text" class="mylist_goal" name="goal" placeholder="메인목표를 추가해주세요!">
-    <label class="complete_checkbox">
-      <input class="mylist_complete" name="complete" value="1" type="checkbox"> 성취율에 포함
-    </label>
-    <button>Add</button>
   </div>
-</form>
+  <div class="mylist_new">
+    <form action="/mylist_model" method="POST">
+      <label for="goal_input">Main Goal</label>
+      <input type="text" class="mylist_goal" name="goal" placeholder="메인목표를 추가해주세요!">
+      <label class="complete_checkbox">
+        <input class="mylist_complete" name="complete" value="1" type="checkbox"> 성취율에 포함<!--올해 목표에 추가로 수정 예정-->
+      </label>
+      <button>Add</button>
+    </form>
+  </div>
+</div>

@@ -8,6 +8,7 @@ class CreatePosts < ActiveRecord::Migration
       t.integer :grade
       t.string  :img
       t.string  :video
+      t.integer :user_id
 
       t.timestamps null: false
     end
