@@ -21,8 +21,8 @@
         <div class="sns_icons"></div>
     <!--포스트 끝-->
         <div class="comments"><!--댓글창-->
-            <span>댓글 0개</span>
-            <span>정렬기준</span>
+            <span>댓글 <%= @this_post.comments.length %>개</span>
+            <span>정렬기준 : 작성 시간 </span>
             <hr>
             <span>pic</span>
             <form action = "/comment_create" method="POST">
@@ -33,7 +33,7 @@
             </form>
             <hr>
             <div class="comment_disp"><!--댓글이 로드되는 부분입니다-->
-                <% @comments.each do |c| %>
+                <% @this_post.comments.each do |c| %>
                         작성자     : <%= c.editor %><br>
                         댓글 내용  : <%= c.content %><br> <hr>
                 <% end %>

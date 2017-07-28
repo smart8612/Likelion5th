@@ -9,6 +9,7 @@ class HomeController < ApplicationController
   def myprofile
     #내 피드에 모든 포스트 불러옴 / 최신순
     #수정필요: 사용자에 따라 내 피드와 친구들 피드를 구별하는 방식 연구
+    
     @posts = current_user.posts
   end
 
@@ -16,8 +17,9 @@ class HomeController < ApplicationController
     #각 post id로 불러옴 
     @this_post = Post.find(params[:post_id])
     
-    #각 Post에 종속되는 댓글을 쿼리하여 배열의 형태로 변수에 저장 => Jeong Taek Han
-    @comments = Comment.where(post_id: params[:post_id])
+    # each do 문 사용 -> 해결
+    # #각 Post에 종속되는 댓글을 쿼리하여 배열의 형태로 변수에 저장 => Jeong Taek Han
+    # @comments = Comment.where(post_id: params[:post_id])
   end
   
 #<<mylist action start: Myounghee Seo
@@ -28,6 +30,7 @@ class HomeController < ApplicationController
     mylist = Mylist.new 
     mylist.goal = params[:goal]
     mylist.complete = params[:complete]
+    mylist.user_id = current_user.id
       
     mylist.save
     
@@ -36,7 +39,7 @@ class HomeController < ApplicationController
   
   def mylist
     
-    @mylist = Mylist.all
+    @mylist = Mylist.where(user_id: current_user.id)
     
   end
   
@@ -46,11 +49,28 @@ class HomeController < ApplicationController
     mylist.destroy
     
     redirect_to '/mylist'
+
+  end 
+  
+  def myplan_model
+    create_myplan = Myplan.new
+    create_myplan.plan = params[:plan]
+    create_myplan.mylist_id = params[:mylist_id]
     
+    create_myplan.save
+      
+    redirect_to '/mylist'
+  
   end
   
-  def list_update
+  def myplan_delete
+    
+    delete_myplan = Myplan.find(params[:myplan_id])
+    delete_myplan.destroy
+    
+    redirect_to '/mylist'
   end
+  
 #>>mylist action end
 
 #<<Post CRUD 액션 (Read 제외) : 한재원
@@ -65,7 +85,7 @@ class HomeController < ApplicationController
     # write 창과 mylist 창에서 둘 다 성취 가능하게 되면 모델을 어디에 맞춰야 할지 연구 중입니다
     newPost.title = params[:input_title]
     newPost.content = params[:input_content]
-    newPost.editor = current_user.email
+    newPost.editor = current_user.name
     newPost.user_id = current_user.id
     # newPost.grade = params[:input_grade]
     newPost.save

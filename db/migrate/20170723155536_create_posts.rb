@@ -9,7 +9,7 @@ class CreatePosts < ActiveRecord::Migration
       t.string  :img
       t.string  :video
       t.integer :user_id
-
+      
       t.timestamps null: false
     end
   end

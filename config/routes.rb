@@ -5,14 +5,17 @@ Rails.application.routes.draw do
   
   get 'home_logout' => 'home#home_logout'
 
-  get 'list_update' => 'home#list_update'
-
   #<<mylist start
   get 'mylist' => 'home#mylist'
 
   post 'mylist_model' => 'home#mylist_model'
 
-  get 'mylist_delete/:mylist_id' => 'home#mylist_delete'
+  post 'mylist_delete/:mylist_id' => 'home#mylist_delete'
+  
+  post 'myplan_delete/:myplan_id' => 'home#myplan_delete'
+
+  post 'myplan_model' => 'home#myplan_model'
+
   #>>mylist end
   
   get 'myprofile' => 'home#myprofile'

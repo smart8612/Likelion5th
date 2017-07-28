@@ -4,7 +4,6 @@ class CreateMylists < ActiveRecord::Migration
       
       t.string  :goal
       t.boolean :complete
-      t.string  :editor
       t.integer :user_id
 
       t.timestamps null: false
