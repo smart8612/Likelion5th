@@ -1,6 +1,8 @@
 <!--포스트 제목 불러오기-->
 <div class="container">
-    이름 : <%= @post.title %> <br>
+    <font size="<% @post.grade %>">
+        이름 : <%= @post.title %> <br>
+    </font>
     점수 : <%= @post.grade %> <br>
 </div>
 <!--포스트 점수-->

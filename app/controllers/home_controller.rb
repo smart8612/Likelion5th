@@ -10,7 +10,7 @@ class HomeController < ApplicationController
     #내 피드에 모든 포스트 불러옴 / 최신순
     #수정필요: 사용자에 따라 내 피드와 친구들 피드를 구별하는 방식 연구
     
-    @posts = current_user.posts
+    @posts = Post.all
   end
 
   def post_show
@@ -30,6 +30,13 @@ class HomeController < ApplicationController
     mylist = Mylist.new 
     mylist.goal = params[:goal]
     mylist.complete = params[:complete]
+    
+    if params[:mylist_nowyear] == true
+      
+      mylist.year = 2017
+      
+    end
+    
     mylist.user_id = current_user.id
       
     mylist.save
@@ -39,7 +46,7 @@ class HomeController < ApplicationController
   
   def mylist
     
-    @mylist = Mylist.where(user_id: current_user.id)
+    @mylist = Mylist.all
     
   end
   

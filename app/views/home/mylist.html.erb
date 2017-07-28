@@ -6,7 +6,8 @@
 <div class="mylist">
   <div class="mylist_list">
     <% @mylist.each do |m| %>
-      <h3>●Main Goal : <%= m.goal %> &nbsp;&nbsp;&nbsp;성취율에 포함 : <%= m.complete %>&nbsp;<a href= "/mylist_delete/<%=m.id%>" data-confirm="해당 목표를 삭제하시겠습니까?" data-method="post"> [삭제]</a></h3>
+      <h3>●Main Goal : <%= m.goal %> &nbsp;&nbsp;&nbsp;성취율에 포함 : <!--연도 연결해서 목표달성률에 포함 시킬거 정택이가 추가해야함-->
+      &nbsp;<a href= "/mylist_delete/<%=m.id%>" data-confirm="해당 목표를 삭제하시겠습니까?" data-method="post"> [삭제]</a></h3>
         <% m.myplans.each do |f|%>
           <h5>&nbsp;&nbsp;ㄴPlan : <%= f.plan %> &nbsp; &nbsp;<a href= "/myplan_delete/<%=f.id%>" data-confirm="해당 계획을 삭제하시겠습니까?" data-method="post">[삭제]</a></h5>
         <%end%>
@@ -26,9 +27,14 @@
     <form action="/mylist_model" method="POST">
       <label for="goal_input"><h3>&nbsp;&nbsp;+Main Goal : </h3></label>
       <input type="text" class="mylist_goal" name="goal" placeholder="메인목표를 추가해주세요!">
-      <label class="complete_checkbox">
-        <input class="mylist_complete" name="complete" value="1" type="checkbox"> 성취율에 포함<!--올해 목표에 추가로 수정 예정-->
-      </label>
+      <!--<input type="checkbox" name="mylist_nowyear" value="true"> <b>올해의 목표입니까?</b> <br>-->
+      
+      <div class = "checkbox">
+        <input type="checkbox" name="mylist_nowyear" value="true"> <b>올해의 목표를 추가해주세요 </b><br>
+      </div>
+      <!--<label class="complete_checkbox">-->
+      <!--  <input class="mylist_thisyear" name="" value="1" type="checkbox"> 성취율에 포함<!--올해 목표에 추가로 수정 예정-->-->
+      <!--</label>-->
       <button type ="submit" class="mylist_goal_button">+</button>
       <br>
     </form>
