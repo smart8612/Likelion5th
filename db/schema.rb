@@ -23,11 +23,11 @@ ActiveRecord::Schema.define(version: 20170727043543) do
 
   create_table "mylists", force: :cascade do |t|
     t.string   "goal"
-    t.boolean  "complete"
-    t.string   "editor"
+    t.boolean  "complete",   default: false
+    t.integer  "year"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "myplans", force: :cascade do |t|

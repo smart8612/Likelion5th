@@ -1,4 +1,7 @@
 class HomeController < ApplicationController
+  
+  $Current_Year = Date.current.year
+  
   def home_login
   end
 
@@ -33,7 +36,7 @@ class HomeController < ApplicationController
     
     if params[:mylist_nowyear] == true
       
-      mylist.year = 2017
+      mylist.year = $Current_Year
       
     end
     
@@ -46,7 +49,9 @@ class HomeController < ApplicationController
   
   def mylist
     
-    @mylist = Mylist.all
+    @mylist = Mylist.where(user_id: current_user.id)
+    
+    @now_year_len = @mylist.where(year: $Current_Year).length
     
   end
   

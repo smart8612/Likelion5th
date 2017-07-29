@@ -1,13 +1,24 @@
 <hr>
 <h1>리스트 페이지</h1>
 <hr>
-<h1>2017년</h1>
+<h1><%= $Current_Year %>년, 성취도 :<%= 5 / @now_year_len.to_f * 100  %>%</h1>
 <hr>
 <div class="mylist">
   <div class="mylist_list">
     <% @mylist.each do |m| %>
       <h3>●Main Goal : <%= m.goal %> &nbsp;&nbsp;&nbsp;성취율에 포함 : <!--연도 연결해서 목표달성률에 포함 시킬거 정택이가 추가해야함-->
-      &nbsp;<a href= "/mylist_delete/<%=m.id%>" data-confirm="해당 목표를 삭제하시겠습니까?" data-method="post"> [삭제]</a></h3>
+      <!--버튼 미완성-->
+      <div class="btn-group" data-toggle="buttons">
+        <label class="btn btn-primary">
+          <input type="radio" name="complete" id="option2" autocomplete="off"> 달성완료!
+        </label>
+        <label class="btn btn-primary">
+          <input type="radio" name="complete" id="option3" autocomplete="off"> 달성취소!
+        </label>
+      </div>
+      <!--버튼 미완성-->
+
+      &nbsp;<a href= "/mylist_delete/<%=m.id%>" data-confirm="해당 목표를 삭제하시겠습니까?" data-method="post"> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></h3>
         <% m.myplans.each do |f|%>
           <h5>&nbsp;&nbsp;ㄴPlan : <%= f.plan %> &nbsp; &nbsp;<a href= "/myplan_delete/<%=f.id%>" data-confirm="해당 계획을 삭제하시겠습니까?" data-method="post">[삭제]</a></h5>
         <%end%>
@@ -27,14 +38,9 @@
     <form action="/mylist_model" method="POST">
       <label for="goal_input"><h3>&nbsp;&nbsp;+Main Goal : </h3></label>
       <input type="text" class="mylist_goal" name="goal" placeholder="메인목표를 추가해주세요!">
-      <!--<input type="checkbox" name="mylist_nowyear" value="true"> <b>올해의 목표입니까?</b> <br>-->
-      
-      <div class = "checkbox">
-        <input type="checkbox" name="mylist_nowyear" value="true"> <b>올해의 목표를 추가해주세요 </b><br>
-      </div>
-      <!--<label class="complete_checkbox">-->
-      <!--  <input class="mylist_thisyear" name="" value="1" type="checkbox"> 성취율에 포함<!--올해 목표에 추가로 수정 예정-->-->
-      <!--</label>-->
+      <label class="complete_checkbox">
+        <input name="now_year" value="true" type="checkbox"> 올해의 목표입니까? <!--올해 목표에 추가로 수정 예정-->
+      </label>
       <button type ="submit" class="mylist_goal_button">+</button>
       <br>
     </form>

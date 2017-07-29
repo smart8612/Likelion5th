@@ -3,7 +3,7 @@ class CreateMylists < ActiveRecord::Migration
     create_table :mylists do |t|
       
       t.string  :goal
-      t.boolean :complete
+      t.boolean :complete, default:false
       t.integer :year
       t.integer :user_id
 
