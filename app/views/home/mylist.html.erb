@@ -1,34 +1,50 @@
 <hr>
 <h1>리스트 페이지</h1>
 <hr>
-<h1><%= $Current_Year %>년, 성취도 :<%= 5 / @now_year_len.to_f * 100  %>%</h1>
+
+<h1><%= $Current_Year %>년, 성취도 <%= $Data_k %>%</h1>
 <hr>
 <div class="mylist">
   <div class="mylist_list">
     <% @mylist.each do |m| %>
-      <h3>●Main Goal : <%= m.goal %> &nbsp;&nbsp;&nbsp;성취율에 포함 : <!--연도 연결해서 목표달성률에 포함 시킬거 정택이가 추가해야함-->
-      <!--버튼 미완성-->
-      <div class="btn-group" data-toggle="buttons">
-        <label class="btn btn-primary">
-          <input type="radio" name="complete" id="option2" autocomplete="off"> 달성완료!
-        </label>
-        <label class="btn btn-primary">
-          <input type="radio" name="complete" id="option3" autocomplete="off"> 달성취소!
-        </label>
-      </div>
-      <!--버튼 미완성-->
-
-      &nbsp;<a href= "/mylist_delete/<%=m.id%>" data-confirm="해당 목표를 삭제하시겠습니까?" data-method="post"> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></h3>
+      <h3>
+        ●Main Goal : <%= m.goal %> &nbsp;
+        <!--버튼 미완성-->
+        <span class="btn_mylist_complete" data-toggle="buttons">
+          <label class="btn btn-primary">
+            <input type="radio" name="complete" id="option2" autocomplete="off"> 달성완료!
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" name="complete" id="option3" autocomplete="off"> 달성취소!
+          </label>
+        </span>
+        <!--버튼 미완성-->
+        &nbsp;&nbsp;<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>&nbsp;
+        <a href= "/mylist_delete/<%=m.id%>" class="glyphicon glyphicon-remove" aria-hidden="true" data-confirm="해당 목표를 삭제하시겠습니까?" data-method="post"></a>
+      </h3>
+      <div class="myplan_list">
         <% m.myplans.each do |f|%>
-          <h5>&nbsp;&nbsp;ㄴPlan : <%= f.plan %> &nbsp; &nbsp;<a href= "/myplan_delete/<%=f.id%>" data-confirm="해당 계획을 삭제하시겠습니까?" data-method="post">[삭제]</a></h5>
+          <h5>
+            &nbsp;&nbsp;ㄴPlan : <%= f.plan %> &nbsp; &nbsp;<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>&nbsp;
+            <a href= "/myplan_delete/<%=f.id%>"class="glyphicon glyphicon-remove" aria-hidden="true" data-confirm="해당 계획을 삭제하시겠습니까?" data-method="post"></a>
+          </h5>
         <%end%>
+      </div>
         <br>
-      <form action ="/myplan_model" method="POST">
-        <label for="plan_input"><h5> &nbsp;&nbsp;&nbsp; +Plan : </h5></label>
-        <input type="hidden" name="mylist_id" value="<%=m.id%>">
-        <input type="text" class="myplan" name="plan" placeholder="계획을 추가해주세요!">
-        <button type ="submit" class="myplan_plan_button">+</button>
-      </form>
+
+        <div class="add myplan">
+          <a class="glyphicon glyphicon-plus" aria-hidden="true" ></a>
+          
+            <form action ="/myplan_model" method="POST" class="after" id="after">
+              <div id="add1">
+              <label for="add_myplan_after_label"><h5> &nbsp;&nbsp;&nbsp; +Plan : </h5></label>
+              <input type="hidden" name="mylist_id" value="<%=m.id%>">
+              <input type="text" class="myplan" name="plan" placeholder="계획을 추가해주세요!">
+              <button type ="submit" class="myplan_plan_button">+</button>
+              </div>
+            </form>
+          
+        </div>
       <hr>
     <% end %>
     

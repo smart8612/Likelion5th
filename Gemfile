@@ -28,6 +28,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 #Bootstrap 4 alpha 6
 gem 'bootstrap', '~> 4.0.0.alpha6'
 
+#bootstrap-glyphicons
+gem 'bootstrap-glyphicons'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

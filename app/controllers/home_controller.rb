@@ -6,6 +6,7 @@ class HomeController < ApplicationController
   end
 
   def home_logout
+    redirect_to "/"
   end
 
   #내 피드 + 포스트 상세페이지 controller: 이송현
@@ -17,12 +18,9 @@ class HomeController < ApplicationController
   end
 
   def post_show
-    #각 post id로 불러옴 
+    
     @this_post = Post.find(params[:post_id])
     
-    # each do 문 사용 -> 해결
-    # #각 Post에 종속되는 댓글을 쿼리하여 배열의 형태로 변수에 저장 => Jeong Taek Han
-    # @comments = Comment.where(post_id: params[:post_id])
   end
   
 #<<mylist action start: Myounghee Seo
@@ -34,7 +32,7 @@ class HomeController < ApplicationController
     mylist.goal = params[:goal]
     mylist.complete = params[:complete]
     
-    if params[:mylist_nowyear] == true
+    if params[:now_year] == "true"
       
       mylist.year = $Current_Year
       
@@ -51,7 +49,9 @@ class HomeController < ApplicationController
     
     @mylist = Mylist.where(user_id: current_user.id)
     
+    @mylist.where(year: $Current_Year).length == 0
     @now_year_len = @mylist.where(year: $Current_Year).length
+    $Data_k = 2/@now_year_len.to_f  * 100 # 백분율 계산
     
   end
   

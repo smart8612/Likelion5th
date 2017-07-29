@@ -12,7 +12,9 @@
 //
 //= require jquery
 //= require bootstrap-sprockets
+//= require star-rating.min
+//= require holder.min
 //= require jquery_ujs
-//= require jquery.raty.js
 //= require turbolinks
+//= require custom
 //= require_tree .
