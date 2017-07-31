@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root 'home#home_login'
+  root 'home#mylist'
   
   get 'home_logout' => 'home#home_logout'
 

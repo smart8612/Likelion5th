@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
   
+  before_filter :authenticate_user!
+  
   $Current_Year = Date.current.year
   
   def home_login
@@ -47,11 +49,11 @@ class HomeController < ApplicationController
   
   def mylist
     
-    @mylist = Mylist.where(user_id: current_user.id)
+    $mylist = Mylist.where(user_id: current_user.id)
     
-    @mylist.where(year: $Current_Year).length == 0
-    @now_year_len = @mylist.where(year: $Current_Year).length
-    $Data_k = 2/@now_year_len.to_f  * 100 # 백분율 계산
+    $mylist.where(year: $Current_Year).length == 0
+    $now_year_len = $mylist.where(year: $Current_Year).length
+    $Data_k = 2/$now_year_len.to_f  * 100 # 백분율 계산
     
   end
   

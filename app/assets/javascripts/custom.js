@@ -8,8 +8,8 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
-	$('.glyphicon.glyphicon-plus').click(function(){
-        $('.myplan_list').slideToggle();
+	$('.glyphicon.glyphicon-chevron-down').click(function(){
+        $('.myplan_list').slideTogglse();
         
     });
 });

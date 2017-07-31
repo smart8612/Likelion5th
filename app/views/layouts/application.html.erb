@@ -75,25 +75,29 @@
                 <a class="btn btn-outline-primary" href="/mylist" role="button">목표 추가하기</a>
               </div>
               <div>
-                <table class="goal_graph mx-auto">
-                  <tr>
-                    <th>
-                      <svg width="16" height="150">
-                        <rect width="16" height= <%= 100 %> style="fill:#4286f4;"/>
-                        <!--<rect width="16" height= %= 100 -$Data_k %> style="fill:#ffffff;"/>-->
-                      </svg>
-                    </th>
-                    <th>
-                      <ul>
-                        <li>서울대 입학하기</li>
-                        <li>서울대 전산망 해킹하기</li>
-                        <li>김태희 사진 찾기</li>
-                        <li>멋쟁이사자처럼 만들기</li>
-                        <li>콩두컴퍼니 만들기</li>
-                      </ul>
-                    </th>
-                  </tr>
-                </table>
+                <% if user_signed_in? %>
+                  <table class="goal_graph mx-auto">
+                    <tr>
+                      <th>
+                        <svg width="16" height="150">
+                          <rect width="16" height= <%= 100 %> style="fill:#4286f4;"/>
+                          <rect width="16" height= <%= 100 - $Data_k %> style="fill:#ffffff;"/>
+                        </svg>
+                      </th>
+                      <th>
+                        <ul>
+                          <li>서울대 입학하기</li>
+                          <li>서울대 전산망 해킹하기</li>
+                          <li>김태희 사진 찾기</li>
+                          <li>멋쟁이사자처럼 만들기</li>
+                          <li>콩두컴퍼니 만들기</li>
+                        </ul>
+                      </th>
+                    </tr>
+                  </table>
+                <% else %>
+                  <p> 로그인이 필요합니다! </p>
+                <% end %>
               </div>
           </div>
         </aside>
