@@ -1,22 +1,36 @@
 class HomeController < ApplicationController
   
   before_filter :authenticate_user!
+  before_action :mylist
   
   $Current_Year = Date.current.year
   
-  def home_login
-  end
-
-  def home_logout
-    redirect_to "/"
-  end
-
-  #내 피드 + 포스트 상세페이지 controller: 이송현
-  def myprofile
-    #내 피드에 모든 포스트 불러옴 / 최신순
-    #수정필요: 사용자에 따라 내 피드와 친구들 피드를 구별하는 방식 연구
+  def friends
     
-    @posts = Post.all
+    @users = User.all
+    @list = current_user.followees(User)
+    
+  end
+  
+  def home_login 
+    
+    @my_feeds = Post.where(user_id: current_user.id)
+    @subscribe_feeds = Post.where(user_id: current_user.followees(User))
+    @random_feeds = Post.where.not( user_id: current_user.id, user_id: current_user.followees(User)).shuffle
+    
+  end
+  
+  def home_logout
+    
+    redirect_to "/"
+    
+  end
+  
+  def profile
+    
+    @user_info = User.find(params[:user_id])
+    @post_info = Post.where(user_id: params[:user_id])
+    
   end
 
   def post_show
@@ -49,11 +63,12 @@ class HomeController < ApplicationController
   
   def mylist
     
-    $mylist = Mylist.where(user_id: current_user.id)
+    @mylist = Mylist.where(user_id: current_user.id) # => 현 세션의 mylist를 불러옴
     
-    $mylist.where(year: $Current_Year).length == 0
-    $now_year_len = $mylist.where(year: $Current_Year).length
-    $Data_k = 2/$now_year_len.to_f  * 100 # 백분율 계산
+    now_year_len = @mylist.where(year: $Current_Year).length # => 성취율의 분모
+    now_year_achieve_len = @mylist.where(year: $Current_Year, complete: true).length
+    
+    $achivement_percent = now_year_achieve_len / now_year_len.to_f * 100 # 백분율 계산
     
   end
   
@@ -64,7 +79,16 @@ class HomeController < ApplicationController
     
     redirect_to '/mylist'
 
-  end 
+  end
+  
+  def mylist_complete
+  
+    mylist = Mylist.find(params[:mylist_id])
+    mylist.complete = params[:complete]
+    mylist.save
+    
+    redirect_to '/mylist'
+  end
   
   def myplan_model
     create_myplan = Myplan.new
@@ -103,7 +127,7 @@ class HomeController < ApplicationController
     newPost.user_id = current_user.id
     # newPost.grade = params[:input_grade]
     newPost.save
-    redirect_to "/myprofile"
+    redirect_to "/home_logout"
   end
 
   def post_update #송현: update_view에서 post_update로 수정되었습니다. comment_update와 혼동을 방지하기 위함입니다.
@@ -128,12 +152,6 @@ class HomeController < ApplicationController
     destroyPost = Post.all.find_by_id(params[:id])
     destroyPost.destroy
     redirect_to "/myprofile"
-  end
-  
-  def post_feed # Random Feed용 Action, Created By Jeong Taek Han
-    
-    @random_posts = Post.all.sample(rand(1...Post.count))
-    
   end
   
   def year # 기본적으로 show와 비슷한 기능을 합니다.

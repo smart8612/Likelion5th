@@ -1,0 +1,33 @@
+<h1>사용자 목록 테스트</h1>
+
+<br>
+
+<% @users.each do |f| %>
+    사용자 번호 : <%= f.id %>
+    이메일 : <%= f.email %>
+    이름 : <%= f.name %>
+    <%= link_to "프로필 보기", "/profile/#{f.id}" %>
+    
+    <% if current_user.id == f.id %>
+        <%= "현 사용자의 프로필 입니다!" %>
+        
+        <% else if f.followed_by?(current_user) %>
+          <%= link_to "UnFollow", "/unfollow/#{f.id}" %>
+        
+        <% else %>
+          <%= link_to "Follow", "/follow/#{f.id}" %>
+        
+        <% end %>
+    <% end %>
+    <br><hr>
+<% end %>
+
+<h1>사용자가 구독한 목록</h1>
+
+<% @list.each do |f| %>
+    사용자 번호 : <%= f.id %>
+    이메일 : <%= f.email %>
+    이름 : <%= f.name %>
+    <%= link_to "프로필 보기", "/profile/#{f.id}" %>
+    <hr>
+<% end %>

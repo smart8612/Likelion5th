@@ -10,8 +10,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!--부트스트랩-->
   <!-- jquery cdn -->
-        <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-  <!-- jquery cdn -->
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+  <!-- ajax cdn-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
 <!--header-->
@@ -22,6 +23,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
         <a class="navbar-brand" onclick="location.reload()" href="/">BucketList</a>
+        <% if user_signed_in? %> <!-- 로그인 했을 때 -->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto my-auto">
           <li class="nav-item mx-3">
@@ -31,7 +33,7 @@
             <a class="nav-link" onclick="location.reload()" href="/write">WRITE</a>
           </li>
           <li class="nav-item mx-3">
-            <a class="nav-link" onclick="location.reload()" href="/myprofile">FEED</a>
+            <a class="nav-link" onclick="location.reload()" href="/profile/<%= current_user.id %>">FEED</a>
           </li>
           <!--<li class="nav-item mx-3 dropdown active">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -46,11 +48,25 @@
             <a class="nav-link" onclick="location.reload()" href="#">YEARLY</a>
           </li>
           <li class="nav-item mx-3">
-            <a class="nav-link" onclick="location.reload()" href="#">FRIEND</a>
+            <a class="nav-link" onclick="location.reload()" href="/friends">FRIEND</a>
           </li>
         </ul>
         <a class="btn btn-info my-2" onclick="location.reload()" href="/home_logout" role="button">Logout</a>
       </div>
+      <!-- 만약 로그인하지 않았다면 -->
+      <% else %>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent2" align="right">
+        <ul class="navbar-nav mr-auto my-auto">
+          <li class="nav-item mx-3"></li>
+          <li class="nav-item mx-3"></li>
+          <li class="nav-item mx-3"></li>
+          <li class="nav-item mx-3"></li>
+          <li class="nav-item mx-3"></li>
+        </ul>
+        <a class="btn btn-info my-2" onclick="location.reload()" href="/users/sign_up" role="button"> 회원가입 </a>
+        <a class="btn btn-info my-2" onclick="location.reload()" href="/users/sign_in" role="button"> Log in </a>
+  	  </div>
+      <% end %>
     </nav>
   </div>
 </header>
@@ -81,7 +97,7 @@
                       <th>
                         <svg width="16" height="150">
                           <rect width="16" height= <%= 100 %> style="fill:#4286f4;"/>
-                          <rect width="16" height= <%= 100 - $Data_k %> style="fill:#ffffff;"/>
+                          <rect width="16" height= <%= 100 - $achivement_percent %> style="fill:#ffffff;"/>
                         </svg>
                       </th>
                       <th>
@@ -122,3 +138,4 @@
 </footer>
 </body>
 </html>
+  

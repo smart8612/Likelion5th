@@ -34,18 +34,40 @@
 </header>
     <!--원래 있던 코드 뺀 부분-->
 <article>
-    <div class="card-columns">
-        <% @posts.each do |p| %>
-        <div class="card">
-            <img class="card-img-top img-fluid" src="http://img.etnews.com/news/article/2017/01/13/cms_temp_article_13181333523802.jpg" alt="사용자가 추가한 사진">
-            <div class="card-block">
-              <a href='post_show/<%= p.id %>'><h4 class="card-title"><%= p.title %></h4></a>
-              <p class="card-text"><%= p.content%></p>
-              <a href='post_show/<%= p.id %>'><p class="card-text"><small class="text-muted">자세히 보기</small></p></a>
-              <p class="card-text"><small class="text-muted"><%= p.created_at.strftime("%Y-%m-%d") %></small></p>
-              <p class="card-text"><small class="text-muted">10분 전 작성된 글입니다.</small></p>
-            </div>
-        </div>
+    
+    <div>
+      
+      사용자 정보 = <%= @user_info.id %> <br>
+      사용자 이름 = <%= @user_info.name %> <br>
+      사용자 성별 = <%= @user_info.gender %> <br>
+      <br>
+      
+      <% if current_user.id == @user_info.id %>
+        <%= "현 사용자의 프로필 입니다!" %>
+        
+        <% else if @user_info.followed_by?(current_user) %>
+          <%= link_to "UnFollow", "/unfollow/#{@user_info.id}" %>
+        
+        <% else %>
+          <%= link_to "Follow", "/follow/#{@user_info.id}" %>
+        
+        <% end %>
+      <% end %>
+      
+    </div>
+    
+     <div class="card-columns">
+        <% @post_info.each do |p| %>
+          <div class="card">
+              <img class="card-img-top img-fluid" src="http://img.etnews.com/news/article/2017/01/13/cms_temp_article_13181333523802.jpg" alt="사용자가 추가한 사진">
+              <div class="card-block">
+                <a href='/post_show/<%= p.id %>'><h4 class="card-title"><%= p.title %></h4></a>
+                <p class="card-text"><%= p.content%></p>
+                <a href='/post_show/<%= p.id %>'><p class="card-text"><small class="text-muted">자세히 보기</small></p></a>
+                <p class="card-text"><small class="text-muted"><%= p.created_at.strftime("%Y-%m-%d") %></small></p>
+                <p class="card-text"><small class="text-muted">10분 전 작성된 글입니다.</small></p>
+              </div>
+          </div>
         <% end %>
     </div>
 </article>

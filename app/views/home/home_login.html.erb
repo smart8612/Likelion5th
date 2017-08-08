@@ -1,10 +1,35 @@
-<h1>Home#home_login</h1>
-<p>Find me in app/views/home/home_login.html.erb</p>
+<!--<a href="/users/sign_in">로그인</a><br>-->
+<!--<a href="/mylist">mylist</a><br>-->
+<!--<a href="/myprofile">myprofile</a><br>-->
+<!--<a href="/post_show">post_show</a><br>-->
+<!--<a href="/post_update">post_update</a><br>-->
+<!--<a href="/write">write</a>-->
 
-
-<a href="/users/sign_in">로그인</a><br>
-<a href="/mylist">mylist</a><br>
-<a href="/myprofile">myprofile</a><br>
-<a href="/post_show">post_show</a><br>
-<a href="/post_update">post_update</a><br>
-<a href="/write">write</a>
+<div>
+    <%= @random_feeds.length %> 
+    <!--랜덤 피드가 잘 동작하는지 테스트 하기 위한 코드입니다. 불필요하면 지우세요! => 정택-->
+    <br>
+    
+    <% @my_feeds.each do |k| %>
+        [나의 글]
+        글번호 : <%= k.id %>
+        제목 : <%= k.title %>
+        작성자 : <%= k.editor %>
+        <hr>
+    <% end %>
+    <% @subscribe_feeds.each do |t| %>
+        [구독한 글]
+        글번호 : <%= t.id %>
+        제목 : <%= t.title %>
+        작성자 : <%= t.editor %>
+        <hr>
+    <% end %>
+    
+    <% @random_feeds.each do |t| %>
+        [랜덤 글]
+        글번호 : <%= t.id %>
+        제목 : <%= t.title %>
+        작성자 : <%= t.editor %>
+        <hr>
+    <% end %>
+</div>

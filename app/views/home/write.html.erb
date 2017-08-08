@@ -11,7 +11,14 @@
     <P style="LINE-HEIGHT: 80%">
       
 <!-- 드롭다운 메뉴 -->
-
+    <br> <br>
+    <select name="mylist">
+      <option value="volvo">Volvo</option>
+      <option value="saab">Saab</option>
+      <option value="opel">Opel</option>
+      <option value="audi">Audi</option>
+    </select>
+    
 <!-- 제목 및 본문 작성폼 >> 완료 -->
     <form action="/create" method="post">
     <!-- 제목 입력란 -->
@@ -26,6 +33,8 @@
         <label for="exampleInputPassword1"> 본문 </label>
         <textarea class="form-control" name="input_content" rows="5" id="comment" placeholder="내용을 입력하세요"></textarea>
       </div>
+    <!-- 리셋 버튼 -->
+      <button type="reset" class="btn btn-reset">Reset</button>
     <!-- 저장 버튼 -->
       <button type="submit" class="btn btn-default">저장</button>
     </form>

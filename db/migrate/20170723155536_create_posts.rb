@@ -10,6 +10,7 @@ class CreatePosts < ActiveRecord::Migration
       t.string  :video
       t.integer :user_id
       
+      t.references :user, foreign_key: true
       t.timestamps null: false
     end
   end

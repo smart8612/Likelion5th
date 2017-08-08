@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root 'home#mylist'
+  root 'home#home_login'
   
   get 'home_logout' => 'home#home_logout'
 
@@ -15,10 +15,12 @@ Rails.application.routes.draw do
   post 'myplan_delete/:myplan_id' => 'home#myplan_delete'
 
   post 'myplan_model' => 'home#myplan_model'
+  
+  post 'mylist_complete/:mylist_id' => 'home#mylist_complete'
 
   #>>mylist end
   
-  get 'myprofile' => 'home#myprofile'
+  get '/profile/:user_id' => 'home#profile'
   
   #<<post_show start
   get 'post_show/:post_id' =>'home#post_show'
@@ -35,7 +37,7 @@ Rails.application.routes.draw do
   #<<write start
   get 'write' => 'home#write'
   
-  post 'create' => 'home#create'
+  post '/create' => 'home#create'
   
   get 'destroy_view/:post_id' => 'home#destroy_view' 
   #>>write end
@@ -44,7 +46,11 @@ Rails.application.routes.draw do
   
   post '/comment_create' => 'comment#comment_create'
   
+  get '/friends' => 'home#friends'
   
+  get '/follow/:user_id' => 'social#follow'
+  
+  get '/unfollow/:user_id' => 'social#unfollow'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

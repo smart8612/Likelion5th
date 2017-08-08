@@ -9,7 +9,13 @@ $(document).ready(function() {
 
 $(document).ready(function() {
 	$('.glyphicon.glyphicon-chevron-down').click(function(){
-        $('.myplan_list').slideTogglse();
+        $('.myplan_list').slideToggle();
         
     });
 });
+
+// $(document).ready(function(){
+//     $("button").click(function(){
+//         $("p").toggle();
+//     });
+// });

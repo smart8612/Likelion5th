@@ -3,6 +3,7 @@ class CreateMyplans < ActiveRecord::Migration
     create_table :myplans do |t|
 
       t.string :plan
+      t.boolean :sub_complete, default:false
       t.integer :mylist_id
       t.string :editor
       t.integer :user_id
