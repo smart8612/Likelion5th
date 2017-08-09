@@ -1,43 +1,48 @@
-<!--<div class="container" style="margin-top: 50px">-->
-<!--사진 첨부 >> 미정 -->
-<!-- 동영상 첨부 >> 미정 -->
+<P style="LINE-HEIGHT: 80%">
+
+<form action="/create" method="post">
   
-<!-- 체크박스 => 완성 후 form 안에 합쳐야 함 -->
-    <form action="/create" method="post">
-        <div class = "checkbox">
-            <input type="checkbox" name="mylist_complete" value="true"> <b>성취 완료! </b><br>
-        </div>
-    </form>
-    <P style="LINE-HEIGHT: 80%">
-      
-<!-- 드롭다운 메뉴 -->
-    <br> <br>
-    <select name="mylist">
-      <option value="volvo">Volvo</option>
-      <option value="saab">Saab</option>
-      <option value="opel">Opel</option>
-      <option value="audi">Audi</option>
-    </select>
+  <div class = "checkbox">
+    <input type="checkbox" name="mylist_complete" value="true"> <b>성취 완료! </b><br>
+  </div>
+  
+  <br>
+  
+  <p>mylist에서 선택하기!</p>
+  
+  <select name="mylist_dropdown" id="dropdown_menu">
+    <% @mylist.each do |m| %>
+      <option value="<%= m.goal%>"><%= m.goal%></option>
+    <% end %>
+  </select>
+  
+  <div class="form-group">
+    <label for="exampleInputPassword1"> 제목 </label>
+    <input type="text" class="form-control" name="input_title" id="title" placeholder="제목을 입력하세요">
+  </div>
+  
+  <!--star rating-->
+  <input id="input-id" name="input-id" class="rating rating-loading" type="text" data-stars="5" data-size="sm">
     
-<!-- 제목 및 본문 작성폼 >> 완료 -->
-    <form action="/create" method="post">
-    <!-- 제목 입력란 -->
-      <div class="form-group">
-        <label for="exampleInputPassword1"> 제목 </label>
-        <input type="text" class="form-control" name="input_title" id="exampleInputPassword1" placeholder="제목을 입력하세요">
-      </div>
-      <!--star rating-->
-      <input id="input-id" name="input-id" class="rating rating-loading" type="text" data-stars="5" data-size="sm">
-    <!-- 본문 입력란 -->
-      <div class="form-group">
-        <label for="exampleInputPassword1"> 본문 </label>
-        <textarea class="form-control" name="input_content" rows="5" id="comment" placeholder="내용을 입력하세요"></textarea>
-      </div>
-    <!-- 리셋 버튼 -->
-      <button type="reset" class="btn btn-reset">Reset</button>
-    <!-- 저장 버튼 -->
-      <button type="submit" class="btn btn-default">저장</button>
-    </form>
-  <!-- 작성폼 종료 -->
-<!-- raty -->
-<!-- 버튼을 하나만 써야 하기 때문에 form 하나 안에 다 우겨넣어야 함, bootstrap은 div로 나누어지므로 상관 무
+  <!-- 본문 입력란 -->
+  <div class="form-group">
+    <label for="exampleInputPassword1"> 본문 </label>
+    <textarea class="form-control" name="input_content" rows="5" id="comment" placeholder="내용을 입력하세요"></textarea>
+  </div>
+    
+  <!-- 리셋 버튼 -->
+  <button type="reset" class="btn btn-reset">Reset</button>
+  
+  <!-- 저장 버튼 -->
+  <button type="submit" class="btn btn-default">저장</button>
+</form>
+
+<script>
+  
+  var hw = document.getElementById('dropdown_menu');
+  
+  hw.addEventListener('change', function(){
+    document.getElementById('title').placeholder = hw.value
+  })
+  
+</script>

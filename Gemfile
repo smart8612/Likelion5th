@@ -33,6 +33,9 @@ gem 'bootstrap', '~> 4.0.0.alpha6'
 #bootstrap-glyphicons
 gem 'bootstrap-glyphicons'
 
+#font-awesome
+gem 'font-awesome-sass'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

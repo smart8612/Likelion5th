@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20170803115311) do
     t.text     "content"
     t.string   "editor"
     t.integer  "post_id"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -65,11 +66,12 @@ ActiveRecord::Schema.define(version: 20170803115311) do
 
   create_table "myplans", force: :cascade do |t|
     t.string   "plan"
+    t.boolean  "sub_complete", default: false
     t.integer  "mylist_id"
     t.string   "editor"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "posts", force: :cascade do |t|

@@ -109,6 +109,15 @@ class HomeController < ApplicationController
     redirect_to '/mylist'
   end
   
+  def myplan_sub_complete
+  
+    myplan = Myplan.find(params[:myplan_id])
+    myplan.sub_complete = params[:sub_complete]
+    myplan.save
+    
+    redirect_to '/mylist'
+  end
+  
 #>>mylist action end
 
 #<<Post CRUD 액션 (Read 제외) : 한재원
@@ -119,9 +128,12 @@ class HomeController < ApplicationController
   
   def create
     newPost = Post.new
-    # newPost.mylist_complete = params[:mylist_complete] # 체크박스 변수입니다.
-    # write 창과 mylist 창에서 둘 다 성취 가능하게 되면 모델을 어디에 맞춰야 할지 연구 중입니다
-    newPost.title = params[:input_title]
+    
+    if params[:input_title] == ""
+      newPost.title = params[:mylist_dropdown]
+    else
+      newPost.title = params[:input_title]
+    end
     newPost.content = params[:input_content]
     newPost.editor = current_user.name
     newPost.user_id = current_user.id

@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   post 'myplan_model' => 'home#myplan_model'
   
   post 'mylist_complete/:mylist_id' => 'home#mylist_complete'
+  
+  post 'myplan_sub_complete/:myplan_id' => 'home#myplan_sub_complete'
 
   #>>mylist end
   
@@ -37,7 +39,7 @@ Rails.application.routes.draw do
   #<<write start
   get 'write' => 'home#write'
   
-  post '/create' => 'home#create'
+  post 'create' => 'home#create'
   
   get 'destroy_view/:post_id' => 'home#destroy_view' 
   #>>write end
