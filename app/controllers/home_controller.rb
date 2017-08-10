@@ -5,18 +5,10 @@ class HomeController < ApplicationController
   
   $Current_Year = Date.current.year
   
-  def friends
-    
-    @users = User.all
-    @list = current_user.followees(User)
-    
-  end
-  
   def home_login 
     
-    @my_feeds = Post.where(user_id: current_user.id)
-    @subscribe_feeds = Post.where(user_id: current_user.followees(User))
-    @random_feeds = Post.where.not( user_id: current_user.id, user_id: current_user.followees(User)).shuffle
+    @all_feeds = Post.where(user_id: current_user.followees(User)).where(user_id: current_user.id)
+    @random_feeds = Post.where.not(user_id: current_user.id).where.not(user_id: current_user.followees(User)).shuffle
     
   end
   
@@ -38,92 +30,10 @@ class HomeController < ApplicationController
     @this_post = Post.find(params[:post_id])
     
   end
-  
-#<<mylist action start: Myounghee Seo
-  def mylist_model
-    
-    #mylist의 model 데이터 대입 
-      
-    mylist = Mylist.new 
-    mylist.goal = params[:goal]
-    mylist.complete = params[:complete]
-    
-    if params[:now_year] == "true"
-      
-      mylist.year = $Current_Year
-      
-    end
-    
-    mylist.user_id = current_user.id
-      
-    mylist.save
-    
-    redirect_to "/mylist"
-  end
-  
-  def mylist
-    
-    @mylist = Mylist.where(user_id: current_user.id) # => 현 세션의 mylist를 불러옴
-    
-    now_year_len = @mylist.where(year: $Current_Year).length # => 성취율의 분모
-    now_year_achieve_len = @mylist.where(year: $Current_Year, complete: true).length
-    
-    $achivement_percent = now_year_achieve_len / now_year_len.to_f * 100 # 백분율 계산
-    
-  end
-  
-  def mylist_delete
-  
-    mylist = Mylist.find(params[:mylist_id])
-    mylist.destroy
-    
-    redirect_to '/mylist'
-
-  end
-  
-  def mylist_complete
-  
-    mylist = Mylist.find(params[:mylist_id])
-    mylist.complete = params[:complete]
-    mylist.save
-    
-    redirect_to '/mylist'
-  end
-  
-  def myplan_model
-    create_myplan = Myplan.new
-    create_myplan.plan = params[:plan]
-    create_myplan.mylist_id = params[:mylist_id]
-    
-    create_myplan.save
-      
-    redirect_to '/mylist'
-  
-  end
-  
-  def myplan_delete
-    
-    delete_myplan = Myplan.find(params[:myplan_id])
-    delete_myplan.destroy
-    
-    redirect_to '/mylist'
-  end
-  
-  def myplan_sub_complete
-  
-    myplan = Myplan.find(params[:myplan_id])
-    myplan.sub_complete = params[:sub_complete]
-    myplan.save
-    
-    redirect_to '/mylist'
-  end
-  
-#>>mylist action end
 
 #<<Post CRUD 액션 (Read 제외) : 한재원
   def write
-    #@plan = Plan.new
-    #@goals = Goal.alls
+    
   end
   
   def create
@@ -134,12 +44,14 @@ class HomeController < ApplicationController
     else
       newPost.title = params[:input_title]
     end
+
     newPost.content = params[:input_content]
     newPost.editor = current_user.name
     newPost.user_id = current_user.id
-    # newPost.grade = params[:input_grade]
     newPost.save
+    
     redirect_to "/home_logout"
+    
   end
 
   def post_update #송현: update_view에서 post_update로 수정되었습니다. comment_update와 혼동을 방지하기 위함입니다.
@@ -170,5 +82,16 @@ class HomeController < ApplicationController
     @post = Post.all.find_by_id(params[:id])
   end
 #>>Post CRUD 액션 끝
+
+  def mylist
+    
+    @mylist = Mylist.where(user_id: current_user.id)
+    
+    now_year_len = @mylist.where(year: $Current_Year).length
+    now_year_achieve_len = @mylist.where(year: $Current_Year, complete: true).length
+    
+    $achivement_percent = now_year_achieve_len / now_year_len.to_f * 100
+    
+  end
 
 end

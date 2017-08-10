@@ -6,19 +6,19 @@ Rails.application.routes.draw do
   get 'home_logout' => 'home#home_logout'
 
   #<<mylist start
-  get 'mylist' => 'home#mylist'
+  get 'mylist' => 'mylist#mylist'
 
-  post 'mylist_model' => 'home#mylist_model'
+  post 'mylist_model' => 'mylist#mylist_model'
 
-  post 'mylist_delete/:mylist_id' => 'home#mylist_delete'
+  post 'mylist_delete/:mylist_id' => 'mylist#mylist_delete'
   
-  post 'myplan_delete/:myplan_id' => 'home#myplan_delete'
+  post 'myplan_delete/:myplan_id' => 'mylist#myplan_delete'
 
-  post 'myplan_model' => 'home#myplan_model'
+  post 'myplan_model' => 'mylist#myplan_model'
   
-  post 'mylist_complete/:mylist_id' => 'home#mylist_complete'
+  post 'mylist_complete/:mylist_id' => 'mylist#mylist_complete'
   
-  post 'myplan_sub_complete/:myplan_id' => 'home#myplan_sub_complete'
+  post 'myplan_sub_complete/:myplan_id' => 'mylist#myplan_sub_complete'
 
   #>>mylist end
   
@@ -48,7 +48,7 @@ Rails.application.routes.draw do
   
   post '/comment_create' => 'comment#comment_create'
   
-  get '/friends' => 'home#friends'
+  get '/friends' => 'social#friends'
   
   get '/follow/:user_id' => 'social#follow'
   

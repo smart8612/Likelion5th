@@ -3,7 +3,8 @@
 <form action="/create" method="post">
   
   <div class = "checkbox">
-    <input type="checkbox" name="mylist_complete" value="true"> <b>성취 완료! </b><br>
+    <input type="checkbox" name="mylist_complete" value="true"> <b>성취 완료!</b>
+    <br>
   </div>
   
   <br>
@@ -11,6 +12,7 @@
   <p>mylist에서 선택하기!</p>
   
   <select name="mylist_dropdown" id="dropdown_menu">
+    <option>---</option>
     <% @mylist.each do |m| %>
       <option value="<%= m.goal%>"><%= m.goal%></option>
     <% end %>
