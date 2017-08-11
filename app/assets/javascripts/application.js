@@ -11,10 +11,9 @@
 // about supported directives.
 //
 //= require jquery
-//= require bootstrap-sprockets
-//= require star-rating.min
-//= require holder.min
 //= require jquery_ujs
 //= require turbolinks
+//= require materialize-sprockets
 //= require custom
+//= require holder.min
 //= require_tree .

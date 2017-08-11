@@ -1,8 +1,15 @@
 source 'https://rubygems.org'
 
+# carrierwave (사진 첨부)
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+
+# materializecss
+gem 'materialize-sass'
+gem 'material_icons'
+
 gem 'devise'
 
-gem "socialization" 
+gem "socialization"
 
 gem 'rails_db'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -26,12 +33,6 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-
-#Bootstrap 4 alpha 6
-gem 'bootstrap', '~> 4.0.0.alpha6'
-
-#bootstrap-glyphicons
-gem 'bootstrap-glyphicons'
 
 #font-awesome
 gem 'font-awesome-sass'

@@ -7,7 +7,7 @@ class HomeController < ApplicationController
   
   def home_login 
     
-    @all_feeds = Post.where(user_id: current_user.followees(User)).where(user_id: current_user.id)
+    @all_feeds = Post.where(user_id: current_user.followees(User), user_id: current_user.id)
     @random_feeds = Post.where.not(user_id: current_user.id).where.not(user_id: current_user.followees(User)).shuffle
     
   end
@@ -38,6 +38,9 @@ class HomeController < ApplicationController
   
   def create
     newPost = Post.new
+    Post.create(content: params[:content]).
+      image: params[:image]
+    redirect_to :back
     
     if params[:input_title] == ""
       newPost.title = params[:mylist_dropdown]

@@ -1,6 +1,6 @@
 <P style="LINE-HEIGHT: 80%">
 
-<form action="/create" method="post">
+<form action="/create" method="POST">
   
   <div class = "checkbox">
     <input type="checkbox" name="mylist_complete" value="true"> <b>성취 완료!</b>
@@ -9,23 +9,24 @@
   
   <br>
   
-  <p>mylist에서 선택하기!</p>
-  
-  <select name="mylist_dropdown" id="dropdown_menu">
-    <option>---</option>
-    <% @mylist.each do |m| %>
-      <option value="<%= m.goal%>"><%= m.goal%></option>
-    <% end %>
-  </select>
-  
+  <div class="input-field col s12 m6">
+    <select name="mylist_dropdown" id="dropdown_menu">
+      <option>-------------</option>
+      <% @mylist.each do |m| %>
+        <option value="<%= m.goal%>"><%= m.goal%></option>
+      <% end %>
+    </select>
+    <label>목표</label>
+  </div>
+
+  </div>
   <div class="form-group">
     <label for="exampleInputPassword1"> 제목 </label>
     <input type="text" class="form-control" name="input_title" id="title" placeholder="제목을 입력하세요">
   </div>
+  <!--star-rating-->
   
-  <!--star rating-->
-  <input id="input-id" name="input-id" class="rating rating-loading" type="text" data-stars="5" data-size="sm">
-    
+  
   <!-- 본문 입력란 -->
   <div class="form-group">
     <label for="exampleInputPassword1"> 본문 </label>
@@ -43,7 +44,7 @@
   
   var hw = document.getElementById('dropdown_menu');
   
-  hw.addEventListener('change', function(){
+  hw.addEventListener('click', function(){
     document.getElementById('title').placeholder = hw.value
   })
   

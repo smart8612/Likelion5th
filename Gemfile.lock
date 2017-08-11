@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/carrierwaveuploader/carrierwave.git
+  revision: f43c068be56fbc9ca0b007b3ffe2a1c3d325ffa9
+  specs:
+    carrierwave (1.1.0)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -37,17 +46,9 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.4)
-    autoprefixer-rails (7.1.2.3)
-      execjs
     bcrypt (3.1.11)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap (4.0.0.alpha6)
-      autoprefixer-rails (>= 6.0.3)
-      sass (>= 3.4.19)
-    bootstrap-glyphicons (0.0.1)
-      railties (>= 3.0)
-      sass (>= 3.2)
     builder (3.2.3)
     byebug (9.0.6)
     codemirror-rails (5.16.0)
@@ -98,6 +99,10 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
+    material_icons (2.2.1)
+      railties (>= 3.2)
+    materialize-sass (0.100.1)
+      sass (~> 3.3)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
@@ -204,14 +209,15 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap (~> 4.0.0.alpha6)
-  bootstrap-glyphicons
   byebug
+  carrierwave!
   coffee-rails (~> 4.1.0)
   devise
   font-awesome-sass
   jbuilder (~> 2.0)
   jquery-rails
+  material_icons
+  materialize-sass
   rails (= 4.2.5)
   rails_db
   sass-rails (~> 5.0)

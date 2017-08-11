@@ -1,5 +1,6 @@
 /* global */
 
+/*
 $(document).ready(function() {
 	$('.glyphicon.glyphicon-plus').click(function(){
         $('.after').slideToggle();
@@ -14,8 +15,10 @@ $(document).ready(function() {
     });
 });
 
-$(document).ready(function(){
-    $(".fa.fa-bars").click(function(){
-        $(".widget_profile_section").slideToggle();
-    });
-});
+
+*/
+
+  $(document).ready(function() {
+    $('select').material_select();
+  });
+            

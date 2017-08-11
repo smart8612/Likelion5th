@@ -3,48 +3,48 @@ Rails.application.routes.draw do
 
   root 'home#home_login'
   
-  get 'home_logout' => 'home#home_logout'
+  get '/home_logout' => 'home#home_logout'
 
   #<<mylist start
-  get 'mylist' => 'mylist#mylist'
+  get '/mylist' => 'mylist#mylist'
 
-  post 'mylist_model' => 'mylist#mylist_model'
+  post '/mylist_model' => 'mylist#mylist_model'
 
-  post 'mylist_delete/:mylist_id' => 'mylist#mylist_delete'
+  post '/mylist_delete/:mylist_id' => 'mylist#mylist_delete'
   
-  post 'myplan_delete/:myplan_id' => 'mylist#myplan_delete'
+  post '/myplan_delete/:myplan_id' => 'mylist#myplan_delete'
 
-  post 'myplan_model' => 'mylist#myplan_model'
+  post '/myplan_model' => 'mylist#myplan_model'
   
-  post 'mylist_complete/:mylist_id' => 'mylist#mylist_complete'
+  post '/mylist_complete/:mylist_id' => 'mylist#mylist_complete'
   
-  post 'myplan_sub_complete/:myplan_id' => 'mylist#myplan_sub_complete'
+  post '/myplan_sub_complete/:myplan_id' => 'mylist#myplan_sub_complete'
 
   #>>mylist end
   
   get '/profile/:user_id' => 'home#profile'
   
   #<<post_show start
-  get 'post_show/:post_id' =>'home#post_show'
+  get '/post_show/:post_id' =>'home#post_show'
 
-  post 'comment_create' => 'comment#comment_create'
+  post '/comment_create' => 'comment#comment_create'
   #>>post_show end
 
   #<<post_update start
-  get 'post_update' => 'home#post_update'
+  get '/post_update' => 'home#post_update'
   
-  post 'post_update_a' => 'home#post_update_a'
+  post '/post_update_a' => 'home#post_update_a'
   #>>post_update end
   
   #<<write start
-  get 'write' => 'home#write'
+  get '/write' => 'home#write'
   
-  post 'create' => 'home#create'
+  post '/create' => 'home#create'
   
-  get 'destroy_view/:post_id' => 'home#destroy_view' 
+  get '/destroy_view/:post_id' => 'home#destroy_view' 
   #>>write end
   
-  get 'feed' => 'home#post_feed'
+  get '/feed' => 'home#post_feed'
   
   post '/comment_create' => 'comment#comment_create'
   

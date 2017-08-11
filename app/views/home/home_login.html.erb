@@ -5,26 +5,26 @@
 <!--<a href="/post_update">post_update</a><br>-->
 <!--<a href="/write">write</a>-->
 
+<div class="section">
+    <div class="parallax-container">
+        <h5 class="deep-purple-text text-darken-2 center spacing">안녕하세요 버킷리스트입니다.</h5>
+      <div class="parallax"><img src="http://wfiles.brothersoft.com/n/nature_854-1280x1024.jpg"></div>
+    </div>
+</div>
+
 <div>
     <%= @random_feeds.length %> 
     <!--랜덤 피드가 잘 동작하는지 테스트 하기 위한 코드입니다. 불필요하면 지우세요! => 정택-->
     <br>
     
-    <% @my_feeds.each do |k| %>
-        [나의 글]
+    <% @all_feeds.each do |k| %>
+        [구독하거나 나의 글]
         글번호 : <%= k.id %>
         제목 : <%= k.title %>
         작성자 : <%= k.editor %>
         <hr>
     <% end %>
-    <% @subscribe_feeds.each do |t| %>
-        [구독한 글]
-        글번호 : <%= t.id %>
-        제목 : <%= t.title %>
-        작성자 : <%= t.editor %>
-        <hr>
-    <% end %>
-    
+
     <% @random_feeds.each do |t| %>
         [랜덤 글]
         글번호 : <%= t.id %>
@@ -33,3 +33,30 @@
         <hr>
     <% end %>
 </div>
+
+<div class="sction">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 cards-container">
+        <% @random_feeds.each do |t| %>
+           <div class="card blue-grey darken-1">
+             <div class="card-content white-text">
+               <span class="card-title"><%= t.title %></span>
+             </div>
+             <div class="card-action">
+               <a href="#"><%= t.editor %></a>
+               <a href="#"><%= t.id %>k</a>
+             </div>
+            </div>
+        <% end %>
+        </div>
+      </div>
+    </div>
+</div>
+
+<script>
+    //parallax script
+    $(document).ready(function(){
+      $('.parallax').parallax();
+    });
+</script>
