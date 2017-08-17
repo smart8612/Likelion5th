@@ -1,12 +1,25 @@
+<div class="container">
+
 <h1>사용자 목록 테스트</h1>
 
 <br>
 
 <% @users.each do |f| %>
-    사용자 번호 : <%= f.id %>
-    이메일 : <%= f.email %>
-    이름 : <%= f.name %>
-    <%= link_to "프로필 보기", "/profile/#{f.id}" %>
+ <ul class="collection">
+    <li class="collection-item avatar">
+      <i class="material-icons circle red">play_arrow</i>
+      <span class="title"><b> 이름 : <%= f.name %> </b></span>
+      <p> 사용자 번호 : <%= f.id %> <br>
+      이메일 : <%= f.email %> <br>
+      <if current_user.id == f.id %>
+          <%= "현 사용자의 프로필입니다!" %>
+          <% else %>
+      <%= link_to "프로필 보기", "/profile/#{f.id}" %>
+      <% end %>
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    </li>
+  </ul>
     
     <% if current_user.id == f.id %>
         <%= "현 사용자의 프로필 입니다!" %>
@@ -25,9 +38,25 @@
 <h1>사용자가 구독한 목록</h1>
 
 <% @list.each do |f| %>
-    사용자 번호 : <%= f.id %>
-    이메일 : <%= f.email %>
-    이름 : <%= f.name %>
-    <%= link_to "프로필 보기", "/profile/#{f.id}" %>
-    <hr>
+    <ul class="collection">
+    <li class="collection-item avatar">
+      <img src="<%= f.profile_img.url  %>" alt="" class="circle">
+      <span class="title"><b> 이름 : <%= f.name %> </b></span>
+      <p> 사용자 번호 : <%= f.id %> <br>
+      이메일 : <%= f.email %> <br>
+      <%= link_to "프로필 보기", "/profile/#{f.id}" %>
+      </p>
+      <a href="/unfollow/<%= f.id %>" class="secondary-content" data-confirm="이 사용자를 언팔로우하시겠어요?">
+          <i class="material-icons"> clear </i>
+        </a>
+    </li>
+  </ul>
 <% end %>
+
+</div>
+
+<!-- 사용자 번호 : --> <!-- %= f.id % -->
+<!-- 이메일 : --> <!-- %= f.email % -->
+<!-- 이름 : --> <!-- %= f.name % -->
+    <!-- %= link_to "프로필 보기", "/profile/#{f.id}" % -->
+    <!-- hr -->

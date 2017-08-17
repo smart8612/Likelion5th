@@ -1,24 +1,22 @@
 /* global */
 
-/*
+
 $(document).ready(function() {
-	$('.glyphicon.glyphicon-plus').click(function(){
-        $('.after').slideToggle();
-        
+	$('.myplan_plus').click(function(){
+        var index = $('.myplan_plus').index(this);
+        $('.after').eq(index).slideToggle();
     });
 });
 
 $(document).ready(function() {
-	$('.glyphicon.glyphicon-chevron-down').click(function(){
-        $('.myplan_list').slideToggle();
-        
+	$(".fa.fa-chevron-down").click(function(){
+        var index = $(".fa.fa-chevron-down").index(this);
+        $(".myplan_list").eq(index).slideToggle();
     });
 });
 
+$(document).ready(function() {
+  $('select').material_select();
+});
 
-*/
-
-  $(document).ready(function() {
-    $('select').material_select();
-  });
-            
+//test

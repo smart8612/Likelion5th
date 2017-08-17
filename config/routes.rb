@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   root 'home#home_login'
   
   get '/home_logout' => 'home#home_logout'
 
   #<<mylist start
-  get '/mylist' => 'mylist#mylist'
+  get '/mylist/:user_id' => 'mylist#mylist'
 
   post '/mylist_model' => 'mylist#mylist_model'
 
@@ -44,6 +44,7 @@ Rails.application.routes.draw do
   get '/destroy_view/:post_id' => 'home#destroy_view' 
   #>>write end
   
+  
   get '/feed' => 'home#post_feed'
   
   post '/comment_create' => 'comment#comment_create'
@@ -53,6 +54,14 @@ Rails.application.routes.draw do
   get '/follow/:user_id' => 'social#follow'
   
   get '/unfollow/:user_id' => 'social#unfollow'
+  
+  get '/profile_intro/:user_id' => 'social#profile_intro'
+  
+  post '/intro_edit/:user_id' => 'social#intro_edit'
+  
+  post '/img_edit/:user_id' => 'social#img_edit'
+  
+  # get '/achievement' => 'application#ajax_json'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

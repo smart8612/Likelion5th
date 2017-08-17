@@ -1,7 +1,12 @@
 source 'https://rubygems.org'
 
-# carrierwave (사진 첨부)
-gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+# SNS Authentication
+gem 'omniauth-facebook'
+
+# File Uploading Gem 
+gem 'fog-aws'
+gem 'mini_magick'
+gem 'carrierwave', '~> 1.0'
 
 # materializecss
 gem 'materialize-sass'

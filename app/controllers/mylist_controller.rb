@@ -1,5 +1,7 @@
 class MylistController < ApplicationController
   
+  before_action :mylist
+  
   def mylist_model
       
     mylist = Mylist.new 
@@ -16,7 +18,7 @@ class MylistController < ApplicationController
       
     mylist.save
     
-    redirect_to "/mylist"
+    redirect_to :back
     
   end
   
@@ -24,10 +26,17 @@ class MylistController < ApplicationController
     
     @mylist = Mylist.where(user_id: current_user.id)
     
-    now_year_len = @mylist.where(year: $Current_Year).length
+    @mylist_bar = @mylist.where(year: $Current_Year)
+    
+    now_year_len = @mylist_bar.length
     now_year_achieve_len = @mylist.where(year: $Current_Year, complete: true).length
     
-    $achivement_percent = now_year_achieve_len / now_year_len.to_f * 100
+    if now_year_len == 0 or now_year_achieve_len == 0
+      $achivement_percent = 0
+    else  
+      temp = now_year_achieve_len / now_year_len.to_f * 100
+      $achivement_percent = temp.to_int
+    end
     
   end
   
@@ -36,7 +45,7 @@ class MylistController < ApplicationController
     mylist = Mylist.find(params[:mylist_id])
     mylist.destroy
     
-    redirect_to '/mylist'
+    redirect_to :back
     
   end
   
@@ -46,7 +55,7 @@ class MylistController < ApplicationController
     mylist.complete = params[:complete]
     mylist.save
     
-    redirect_to '/mylist'
+    redirect_to :back
     
   end
   
@@ -57,7 +66,7 @@ class MylistController < ApplicationController
     
     create_myplan.save
       
-    redirect_to '/mylist'
+    redirect_to :back
     
   end
   
@@ -66,7 +75,7 @@ class MylistController < ApplicationController
     delete_myplan = Myplan.find(params[:myplan_id])
     delete_myplan.destroy
     
-    redirect_to '/mylist'
+    redirect_to :back
     
   end
   
@@ -76,7 +85,7 @@ class MylistController < ApplicationController
     myplan.sub_complete = params[:sub_complete]
     myplan.save
     
-    redirect_to '/mylist'
+    redirect_to :back
     
   end
   

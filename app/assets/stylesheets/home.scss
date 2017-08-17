@@ -1,27 +1,23 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+a{
+    color: black;
+}
+a:hover{
+    color: grey;
+}
 
-/*.bg-faded{
+.bg-faded{
     background-color: transparent;
 }
 
-#mainNav{ //모바일에서 차이가 큼
-     position:fixed;
-     top: 0;
-     left: 0;
-     height: 50px;
-     background-color: white;
-     width: 100%;
-     z-index: 1;
-     bottom: 30px;
-    //  padding-left: 0;
-    //  padding-right: 0;
+header .nav-wrapper{
+    border-bottom: 0.3px solid white;
 }
 
 body {
     background-color: #f7f7f7;
-    margin-top: 120px;
 }
 
 .widget_profile_section {
@@ -61,94 +57,63 @@ body {
 
 }
 
-
-//profile 시작
-
-header .mainProfile {
-
-  position: relative;
-  height: 700px;
-  padding-top: 30px;
-  padding-bottom: 30px;
-  background: skyblue;
-  color: white;
+//profile feed 크기
+.card.horizontal .card-image img {
+  border-radius: 2px 0 0 2px;
+  //max-height: 100%;
+  width: 400px;
+  height: 300px;
 }
 
-header .container {
-  padding-top: 30px;
-  padding-bottom: 50px;
+//profile feed 이미지 cover
+.feed-img{
+  display:block;
+  width:100%; height:100%;
+  object-fit: cover;
 }
 
-#mainProfile_1{
+//tab에서 탭을 바꿀 경우 화면이 올라가는 오류 때문에 넣음
+.myprofile-section {
+  width: auto;
+  height: 1000px;
+}
+
+//my feed에서 프로필 이미지를 특정 위치에 고정하기 위해서
+.profile_user_tag {
+    display: inline-block; /* 한 줄로 만들기 */
+    vertical-align: middle;
+    
+}
+
+.profile_img_tag {
+    width: auto;
+    height: auto;
+    max-width: 40px;
+    max-height: 40px;
+}
+
+.profile_user {
     position: absolute;
-    text-align: center;
-    background-color: pink;
-    top: 0px;
-    left: 50px;
-    width: 100px;
+    bottom: 70px;
 }
 
-.mainProfile_img {
-  display: block;
-  margin: 20px auto;
-  
+.write_day {
+  position: absolute;
+  bottom: 75px;
+  right: 25px;
 }
 
-#mainProfile_2{
-    position: absolute;
-    left: 150px;
-}
-header .intro-text .intro-name {
+.body .intro-text .intro-name {
   display: block;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   font-weight: 700;
   font-size: 2em;
 }
-header .intro-text .intro {
+.body .intro-text .intro {
   font-size: 1.25em;
   font-weight: 300;
 }
-
-// 수정중
-.mainProfile{
-    border-color: black;
-}
-.card-columns {
-  @include media-breakpoint-only(lg) {
-    column-count: 4;
-  }
-  @include media-breakpoint-only(xl) {
-    column-count: 4;
-  }
-}
-*/
-
-.mainProfile_mylist{
-    text-align: center;
-    background-color: yellow;
-    width: 150px;
-}
-
-.mainProfile_mylist.fa{
-    width: 30px;
-}
-.mainProfile_mylist .list{
-    text-align: left;
-}
-// mylist 시작
-
-
-// test
-.after{
-    display:none;
-}
-
-.myplan_list{
-    display:none;
-}
-
-
 
 /* 프로필 이미지 사이즈 조정 */
 .side-nav .user-view .circle {
@@ -194,7 +159,11 @@ header .intro-text .intro {
 }
 
 .section {
-    padding: 0;
+  
+}
+
+.section-parallax {
+  padding: 0;
 }
 
 .spacing {
@@ -203,48 +172,48 @@ header .intro-text .intro {
 
 /* masonry */
 // Media Query Ranges
-$small-screen-up: 601px !default;
-$medium-screen-up: 993px !default;
-$large-screen-up: 1201px !default;
-$small-screen: 600px !default;
-$medium-screen: 992px !default;
-$large-screen: 1200px !default;
+// $small-screen-up: 601px !default;
+// $medium-screen-up: 993px !default;
+// $large-screen-up: 1201px !default;
+// $small-screen: 600px !default;
+// $medium-screen: 992px !default;
+// $large-screen: 1200px !default;
 
-$medium-and-up: "only screen and (min-width : #{$small-screen-up})" !default;
-$large-and-up: "only screen and (min-width : #{$medium-screen-up})" !default;
-$small-and-down: "only screen and (max-width : #{$small-screen})" !default;
-$medium-and-down: "only screen and (max-width : #{$medium-screen})" !default;
-$medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width : #{$medium-screen})" !default;
+// $medium-and-up: "only screen and (min-width : #{$small-screen-up})" !default;
+// $large-and-up: "only screen and (min-width : #{$medium-screen-up})" !default;
+// $small-and-down: "only screen and (max-width : #{$small-screen})" !default;
+// $medium-and-down: "only screen and (max-width : #{$medium-screen})" !default;
+// $medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width : #{$medium-screen})" !default;
 
-@mixin column-count($ct) {
-  -webkit-column-count: $ct;
-  -moz-column-count: $ct;
-  column-count: $ct;
-}
+// @mixin column-count($ct) {
+//   -webkit-column-count: $ct;
+//   -moz-column-count: $ct;
+//   column-count: $ct;
+// }
 
-.cards-container {
-  column-break-inside: avoid;
-  .card {
-    display: inline-block;
-    overflow: visible;
-  }
-}
+// .cards-container {
+//   column-break-inside: avoid;
+//   .card {
+//     display: inline-block;
+//     overflow: visible;
+//   }
+// }
 
-@media #{$small-and-down} {
-  .cards-container {
-    @include column-count(1);
-  }
-}
-@media #{$medium-and-up} {
-  .cards-container {
-    @include column-count(2);
-  }
-}
-@media #{$large-and-up} {
-  .cards-container {
-    @include column-count(3);
-  }
-}
+// @media #{$small-and-down} {
+//   .cards-container {
+//     @include column-count(1);
+//   }
+// }
+// @media #{$medium-and-up} {
+//   .cards-container {
+//     @include column-count(2);
+//   }
+// }
+// @media #{$large-and-up} {
+//   .cards-container {
+//     @include column-count(3);
+//   }
+// }
 
 
 /// Styles for demo
@@ -252,8 +221,38 @@ $medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width 
   text-align: center;
 }
 
-/*masonry*/
-
-.goal-table {
-    margin-left: 10px;
+.bold {
+     font-weight: bold;
 }
+
+// hover 마우스 손모양으로 바뀜
+
+.hover_cursor {
+    cursor: pointer;
+}
+
+// !! side-nav에서 사용됨
+
+//그래프와 리스트를 한 줄에 두기 위해
+.goal-section {
+  float: none; /* float 제거 */
+  display: inline-block; /* 한 줄로 만들기 */
+  text-align: initial; /* text-align을 초기화 */
+}
+
+//완료 했을때 표현 해주는 방식
+.cancel-line {
+  text-decoration:line-through;
+}
+
+//줄 간격 & 길이가 길면 ...표시
+.goal-list li {
+  line-height: 30px;
+  
+  display: block;
+  width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+// !! side-nav에서 사용됨

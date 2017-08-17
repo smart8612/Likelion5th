@@ -6,9 +6,11 @@ class CreatePosts < ActiveRecord::Migration
       t.text    :content
       t.string  :editor
       t.integer :grade
-      t.string  :img
       t.string  :video
       t.integer :user_id
+      t.integer :year
+      t.integer :month
+      t.integer :day
       
       t.references :user, foreign_key: true
       t.timestamps null: false

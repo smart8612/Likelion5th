@@ -1,44 +1,75 @@
-<div class="banner">
-    <div>
-        banner text
+<div class="container">
+    
+    <!-- 수정 버튼, 삭제 버튼, 목록으로 가기 링크 (프론트 적용 완료) -->
+    <div class="row">
+        <!--수정 버튼 (링크 안 걸려 있음) -->
+        <a href="/" class="waves-effect waves-light btn"><i class="material-icons" style="margin-right:-10px; margin-left:-10px;">create</i></a>
+        <!-- 삭제 버튼 (링크 안 걸려 있음) --> &nbsp;
+        <a href="/" class="waves-effect waves-light btn"><i class="material-icons" style="margin-right:-10px; margin-left:-10px;">clear</i></a>
+        <a href="/"> &nbsp; 목록으로 가기 </a>
     </div>
-</div>
-<!--수정/삭제버튼 추가-->
-<div class ="post_disp"> <!--post display 게시물이 로드되는 부분입니다.-->
-    <!--each do 문을 사용해 포스트를 불러옵니다-->
-    <div class="post_box">
-        <div><!--포스트 제목-->
-            <span class ="ptitle">
-                <%= @this_post.title%>
-            </span>
-            <span><%= @this_post.created_at %> | <%= @this_post.editor%></span>
-        </div>
-        <div class ="content_box"></div>
-        <div class ="img_box"><%= image_tag("flowers.jpg", size: "600") %></div>
-        <div class ="tag">
-            <span>Tags: post tags</span>
-        </div>
-        <div class="sns_icons"></div>
-    <!--포스트 끝-->
-        <div class="comments"><!--댓글창-->
-            <span>댓글 <%= @this_post.comments.length %>개</span>
-            <span>정렬기준 : 작성 시간 </span>
-            <hr>
-            <span>pic</span>
-            <form action = "/comment_create" method="POST">
-                <div class="commenter_pic"><%= image_tag("pastel_sky.jpg", size: "30") %></div>
-                <input type="hidden" name="post_id" value=<%= @this_post.id %>/><br><!--댓글이 로드되는 부분입니다-->
-                <input type="text" class="comment_input" name="input_comment_content"/><br>
-                <button type="submit" class="comment_button">댓글작성</button><br>
-            </form>
-            <hr>
-            <div class="comment_disp"><!--댓글이 로드되는 부분입니다-->
-                <% @this_post.comments.each do |c| %>
-                        작성자     : <%= c.editor %><br>
-                        댓글 내용  : <%= c.content %><br> <hr>
-                <% end %>
-                <hr>
+    <!-- 게시글 로드 부분 -->
+    <div class ="post_disp">
+        <!--each do 문을 사용해 포스트를 불러옵니다-->
+        <div class="post_box">
+            <div class="row" style="border-bottom:1px dotted;">
+            <!-- 게시글 제목 / 게시 시간 / 작성자 -->
+                <span class ="ptitle"> <b><%= @this_post.title%></b> </span>
+                <span style="float:right;"><%= @this_post.created_at %> | <%= @this_post.editor%></span>
+            </div>
+            <div class ="content_box" style="margin-bottom:30px;"> <%= @this_post.content %> </div>
+            <div><img class="materialboxed" width="650" src="<%= @this_post.img %>"></div>
+            <div class ="tag">
+                <div class="chip"> Tag <i class="close material-icons">close</i> </div>
+            </div>
+            <div class="sns_icons"></div>
+            
+        <!--포스트 끝-->
+            <div class="comments">
+                <!-- 댓글 수 표시 텍스트 (프론트엔드 적용 완료) -->
+                <span><b>댓글 <%= @this_post.comments.length %>개</b>&nbsp;&nbsp;(작성 시간 기준) </span> <hr>
+                <form action = "/comment_create" method="POST">
+                    <input type="hidden" name="post_id" value=<%= @this_post.id %>/><br>
+                    <!-- 댓글 입력창 (프론트엔드 적용 완료) -->
+                    <div class="row">  
+                        <div class="input-field col s10">
+                          <textarea id="textarea1" class="comment_input materialize-textarea" name="input_comment_content"></textarea>
+                          <label for="textarea1"> 피드에 대한 댓글을 남겨주세요! </label>
+                        </div>
+                        <button type="submit" class="comment_button waves-effect waves-light btn">
+                            <i class="material-icons left" style="margin-left:-20px;"> format_quote </i> 댓글 작성
+                        </button>
+                    </div>
+                </form>
+                
+                <!-- 댓글 표시 (프론트엔트 적용 완료) -->
+                <div class="comment_disp" style="margin-top:-30px;">
+                    <% @this_post.comments.each do |c| %>
+                        <div class="card-panel teal lighten-5">
+                            <div class="chip"><img src="images/yuna.jpg"><%= c.editor %></div>
+                            <br> 댓글 내용   <%= c.content %><br>
+                        </div>
+                    <% end %>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<style>
+    .comment_disp {
+        font-family:'Nanum Gothic';
+        padding-bottom:75px;
+    }
+    
+    .container {
+        padding-top:30px;
+        font-family:'Nanum Gothic';
+    }
+</style>
+
+<script>
+    $('.carousel.carousel-slider').carousel({fullWidth: true});
+            
+</script>
+
