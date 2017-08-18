@@ -24,7 +24,7 @@ class MylistController < ApplicationController
   
   def mylist
     
-    @mylist = Mylist.where(user_id: current_user.id)
+    @mylist = Mylist.where(user_id: params[:user_id])
     
     @mylist_bar = @mylist.where(year: $Current_Year)
     

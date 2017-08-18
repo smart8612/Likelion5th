@@ -1,33 +1,108 @@
 <div class="container" style="margin-top: 50px">
 <!--사진 첨부 >> 미정 -->
 <!-- 동영상 첨부 >> 미정 -->
-  
-<!-- 체크박스 => 완성 후 form 안에 합쳐야 함 -->
-    <form action="/post_update_a" method="post">
-        <div class = "checkbox">
-            <input type="checkbox" name="mylist_complete"> <b>성취 완료! </b><br>
-        </div>
-    </form>
-    <P style="LINE-HEIGHT: 80%">
     
 <!-- 목표선택 메뉴 => mylist 모델에 plan 필드가 아직 없어서 argument error가 뜹니다.
      run 때 안 되면 이 부분은 잠시 지우고 하세요 -->
+  <form action="/home/post_update_a" method="post">
+  <div class="dropdown">
+    <div class="input-field col s12">
+      <select name="p_year">
+        <option value="" disabled selected> Select Year </option>
+        <%= for i in (1900..$Current_Year).to_a.reverse do %>
+          <option value="<%= i  %>"> <%= i  %>년</option>
+        <% end %>
+      </select>
+      <label> YEAR </label>
+    </div> &nbsp &nbsp &nbsp &nbsp
+    
+    <!-- 달 선택 -->
+    <div class="input-field col s12">
+      <select name="p_month">
+        <option value="" disabled selected> <%= @updatePost.month %> </option>
+        <%= for i in 1..12 do %>
+          <option value="<%= i  %>"> <%= i  %>월</option>
+        <% end %>
+      </select>
+      <label> MONTH </label>
+    </div> &nbsp &nbsp &nbsp &nbsp
+    
+    <!-- 일 선택 -->
+    <div class="input-field col s12">
+      <select name="p_day">
+        <option value="" disabled selected> <%= @updatePost.day %> </option>
+        <%= for i in 1..31 do %>
+          <option value="<%= i  %>"> <%= i  %>일</option>
+        <% end %>
+      </select>
+      <label> DATE </label>
+    </div>
+  </div>
+  
+  <div class="input-field col s6 m6" id="main_goal">
+    <select name="mylist_dropdown" id="dropdown_menu" style="width:400px">
+      <option value="" disabled selected><%= @updatePost.title %></option>
+      <option value="새로운 목표가 제목으로 들어갑니다">새 목표 입력하기</option>
+      <option value="no_goal">목표 없이 글쓰기</option>
+      <% @mylist.each do |m| %>
+        <option style="font-weight: bold" value="<%= m.goal%>"><%= m.goal%></option>
+        <% m.myplans.each do |n|%>
+        <option value="<%= n.plan%>">---<%= n.plan%></option>
+        <% end %>
+      <% end %>
+    </select>
+    <label>목표</label>
+  </div>
 
 <!-- 제목 및 본문 작성폼 >> 완료 -->
-    <form action="/post_update_a" method="post">
     <!-- 제목 입력란 -->
       <div class="form-group">
         <label for="exampleInputPassword1"> 제목 </label>
         <input type="text" class="form-control" name="input_title" id="exampleInputPassword1" value="<%= @updatePost.title %>">
       </div>
+      <!-- grading-->
+      <div class="form-group">
+        <label for="exampleInputPassword1"> rating </label>
+        <input type="text" class="form-control" name="input_grade" id="title" value="<%= @updatePost.grade %>" placeholder="점수를 입력하세요">
+      </div>
+    <!-- 파일 첨부 -->
+    <div class="file-field input-field">
+      <div class="btn">
+        <span>File</span>
+        <input type="file" name="imageFile" accept"image/png,image/gif,image/jpeg" multiple>
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+      </div>
+    </div>
     <!-- 본문 입력란 -->
       <div class="form-group">
         <label for="exampleInputPassword1"> 본문 </label>
-        <textarea class="form-control" name="input_content" rows="5" id="comment" value="<%= @updatePost.content %>"></textarea>
+        <textarea class="form-control" name="input_content" rows="5" id="content" style="height:400px;"><%= @updatePost.content %></textarea>
       </div>
     <!-- 저장 버튼 -->
+    <div class="footer">
       <button type="submit" class="btn btn-default">저장</button>
+    </div>
     </form>
   <!-- 작성폼 종료 -->
 
-<!-- 버튼을 하나만 써야 하기 때문에 form 하나 안에 다 우겨넣어야 함, bootstrap은 div로 나누어지므로 상관 무
+<!-- 버튼을 하나만 써야 하기 때문에 form 하나 안에 다 우겨넣어야 함, bootstrap은 div로 나누어지므로 상관 무-->
+
+<style>
+  .form-whole {
+    padding-top:30px;
+  }
+  
+  .dropdown {
+    display: flex;
+  } /* 날짜 드롭다운 */
+  
+  .footer {
+    padding-bottom: 150px;
+    float: right;
+    margin-top:10px;
+  }
+  
+
+</style>

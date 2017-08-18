@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   #>>mylist end
   
-  get '/profile/:user_id' => 'home#profile'
+  get '/profile/:user_id' => 'social#profile'
   
   #<<post_show start
   get '/post_show/:post_id' =>'home#post_show'
@@ -31,9 +31,9 @@ Rails.application.routes.draw do
   #>>post_show end
 
   #<<post_update start
-  get '/post_update' => 'home#post_update'
+  get '/post_update/:post_id' => 'home#post_update'
   
-  post '/post_update_a' => 'home#post_update_a'
+  post '/post_update_a/:post_id' => 'home#post_update_a'
   #>>post_update end
   
   #<<write start
@@ -49,6 +49,8 @@ Rails.application.routes.draw do
   
   post '/comment_create' => 'comment#comment_create'
   
+  post '/comment/:comment_id' => 'comment#comment_delete'
+  
   get '/friends' => 'social#friends'
   
   get '/follow/:user_id' => 'social#follow'
@@ -60,6 +62,10 @@ Rails.application.routes.draw do
   post '/intro_edit/:user_id' => 'social#intro_edit'
   
   post '/img_edit/:user_id' => 'social#img_edit'
+  
+  get '/year/:user_id' => 'home#year'
+  
+  get '/to_year/:user_id/:select_year' => 'home#to_year'
   
   # get '/achievement' => 'application#ajax_json'
   

@@ -2,10 +2,13 @@
     
     <!-- 수정 버튼, 삭제 버튼, 목록으로 가기 링크 (프론트 적용 완료) -->
     <div class="row">
-        <!--수정 버튼 (링크 안 걸려 있음) -->
-        <a href="/" class="waves-effect waves-light btn"><i class="material-icons" style="margin-right:-10px; margin-left:-10px;">create</i></a>
-        <!-- 삭제 버튼 (링크 안 걸려 있음) --> &nbsp;
-        <a href="/" class="waves-effect waves-light btn"><i class="material-icons" style="margin-right:-10px; margin-left:-10px;">clear</i></a>
+ 
+        <!-- 수정/삭제 버튼 (완료) --> &nbsp;
+        <% if current_user.id == @this_post.user.id %>
+            <a href="/post_update/<%= @this_post.id%>" class="waves-effect waves-light btn" data-method="post"><i class="material-icons" style="margin-right:-10px; margin-left:-10px;">create</i></a>
+            <a href="/destroy_view/<%= @this_post.id %>"  class="waves-effect waves-light btn" data-method="post"><i class="material-icons" style="margin-right:-10px; margin-left:-10px;">clear</i></a>
+        <% end %>
+        <!--목록으로 가기-->
         <a href="/"> &nbsp; 목록으로 가기 </a>
     </div>
     <!-- 게시글 로드 부분 -->
@@ -17,8 +20,8 @@
                 <span class ="ptitle"> <b><%= @this_post.title%></b> </span>
                 <span style="float:right;"><%= @this_post.created_at %> | <%= @this_post.editor%></span>
             </div>
-            <div class ="content_box" style="margin-bottom:30px;"> <%= @this_post.content %> </div>
-            <div><img class="materialboxed" width="650" src="<%= @this_post.img %>"></div>
+            <div class ="content_box word-break" style="margin-bottom:30px;"> <%= @this_post.content %> </div>
+            <div><img class="materialboxed" width="650" src="<%= @this_post.img %>"></div> <br>
             <div class ="tag">
                 <div class="chip"> Tag <i class="close material-icons">close</i> </div>
             </div>
@@ -46,8 +49,15 @@
                 <div class="comment_disp" style="margin-top:-30px;">
                     <% @this_post.comments.each do |c| %>
                         <div class="card-panel teal lighten-5">
-                            <div class="chip"><img src="images/yuna.jpg"><%= c.editor %></div>
-                            <br> 댓글 내용   <%= c.content %><br>
+                            <div class="chip">
+                                <img src="<%= image_path('default-profile.png') %>">
+                                <%= c.editor %>
+                            </div>
+                            <!--댓글 삭제(완료)-->
+                            <a href= "/comment/<%=c.id%>" aria-hidden="true" data-method="post"><i class="tiny material-icons"> clear </i></a>
+                            <!--댓글 수정 아직 안함-->
+                            <i class="tiny material-icons"> create </i>
+                            <br> <div class="comment_content word-break"><%= c.content %></div><br>
                         </div>
                     <% end %>
                 </div>
@@ -57,6 +67,10 @@
 </div>
 
 <style>
+     .word-break {
+        word-break:break-all;
+    
+    }
     .comment_disp {
         font-family:'Nanum Gothic';
         padding-bottom:75px;
@@ -70,6 +84,6 @@
 
 <script>
     $('.carousel.carousel-slider').carousel({fullWidth: true});
-            
+    // $('.content_box').replace("\r\n","<br>");
 </script>
 

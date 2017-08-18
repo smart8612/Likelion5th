@@ -1,14 +1,46 @@
 class SocialController < ApplicationController
   
   before_action :mylist
+  
+  def mylist
     
-  def friends
+    @mylist = Mylist.where(user_id: User.find(params[:user_id]).id)
+    
+    @mylist_bar = @mylist.where(year: $Current_Year).order(:created_at).reverse
+    
+    now_year_len = @mylist_bar.length
+    now_year_achieve_len = @mylist.where(year: $Current_Year, complete: true).length
+    
+    if now_year_len == 0 or now_year_achieve_len == 0
+      $achivement_percent = 0
+    else  
+      temp = now_year_achieve_len / now_year_len.to_f * 100
+      $achivement_percent = temp.to_int
+    end
     
     @users = User.all
     @list = current_user.followees(User)
     
   end
+  
+  def friends
     
+    @users = User.all
+    @list = current_user.followees(User)
+    
+    
+  end
+  
+  def profile
+    
+    @user_info = User.find(params[:user_id])
+    @post_info = Post.where(user_id: params[:user_id])
+    
+    @users = User.all
+    @list = current_user.followees(User)
+    
+  end
+  
   def follow
         
     current_user.follow!(User.find(params[:user_id]))

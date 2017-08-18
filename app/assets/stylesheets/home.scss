@@ -16,6 +16,14 @@ header .nav-wrapper{
     border-bottom: 0.3px solid white;
 }
 
+header .brand-logo {
+    color: #00695c;
+}
+
+.brand-color {
+    color: #00695c;
+}
+
 body {
     background-color: #f7f7f7;
 }
@@ -162,9 +170,68 @@ body {
   
 }
 
-.section-parallax {
-  padding: 0;
+.main-section {
+    height: 400px;
+    background-color: #40bcb7;
+    position: relative;
+    overflow: hidden;
 }
+.main-section::before {
+    content: '';
+    display: block;
+    position: absolute;
+    background-color: #fff;
+    opacity: 0.4;
+    width: 100%;
+    height: 60%;
+    bottom: 0;
+
+}
+.main-section .png{
+    height: 140%;
+    width: 40%;
+    background-image: url(fingerprint.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    left: 30%;
+}
+.main-section .banner_text {
+    text-align: center;
+    background-color: rgba(1,1,1,0.8);
+    color: white;
+    position: absolute;
+    margin: 0 auto;
+    top: 22%;
+    left: 26%;
+    font-size: 3em;
+    z-index:1;
+}
+
+.main-section .banner_btn {
+    text-align: center;
+    position: absolute;
+    margin: 0 auto;
+    top: 60%;
+    left: 46%;
+    z-index:1;
+}
+
+.main-section .banner_subtext {
+    position: absolute;
+    margin: 0 auto;
+    color: black;
+    top: 47%;
+    left: 23%;
+    font-size: 20px;
+    z-index:1;
+}
+
+//parallax
+// .section-parallax {
+//   padding: 0;
+// }
 
 .spacing {
     margin-top: 100px;

@@ -1,4 +1,4 @@
-/* global */
+/* global s*/
 
 
 $(document).ready(function() {
@@ -19,4 +19,3 @@ $(document).ready(function() {
   $('select').material_select();
 });
 
-//test

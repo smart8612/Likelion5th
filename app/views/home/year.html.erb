@@ -1,9 +1,79 @@
-<!--포스트 제목 불러오기-->
-<div class="container">
-    <font size="<% @post.grade %>">
-        이름 : <%= @post.title %> <br>
-    </font>
-    점수 : <%= @post.grade %> <br>
+<% for i in 0..@year_a.length %>
+    <% if @year_a[i].to_i != 0%>
+        <% if @year_a[i] != @year_a[i+1]%>
+            <%= @year_a[i].to_i%>
+        <%end%>
+    <%end%>
+<%end%>
+
+        <%= @input_year%>
+<div class="input-field col s12">
+    <select name="input_year" id="year_drop">
+      <option value="<%=@year_a[0].to_i%>" disabled selected>Choose your option</option>
+      <% for i in 0..@year_a.length %>
+            <% if @year_a[i].to_i != 0%>
+                <% if @year_a[i] != @year_a[i+1]%>
+                    <option value="<%=@year_a[i].to_i%>"><%=@year_a[i].to_i%></option>
+                <%end%>
+            <%end%>
+        <%end%>
+    </select>
+    <label>연도를 선택해주세요</label>
 </div>
-<!--포스트 점수-->
-<!--포스트 점수에따라서 제목 글씨크기-->
+
+<div id="content">
+    
+</div>
+
+<script>
+$("#year_drop").change(function() {
+    var select_value = $("#year_drop option:selected").val();
+    var user_id = <%= @user.id %>
+        
+    var random = function(arr) {
+        return arr[Math.floor(Math.random() * arr.length)];
+    }
+    var one = function(posts, i) {
+        var templatePostArr = '';
+        for(var j=0; j<posts.length; j++) {
+            if (posts[j].month !== i) {
+                continue;
+            }
+             templatePostArr +=   '<div class="y_post" style="background-image: url(' + posts[j].img.url + '); width:' + posts[j].grade*60 + 'px; height:' + posts[j].grade*60 + 'px;  background-color: ' + random(["#40bcb7", "#32928e", "#53C2BF", "#75CECB", "#90D7D5" ])+ ' ; margin-left:' + random([0, 50, 100, 130, 150, 200 ]) + 'px"><span class="y_title" style="font-size: '+ (posts[j].grade*1.5)+12 + 'px;">' + posts[j].title + '</span></div>'; 
+        }
+        return templatePostArr;
+        // return posts[0];
+    }    
+     
+    var two = function(posts) {
+        var templateArr = '<div class="timeline">\
+                                <ul>';
+        for (var i=1; i<=12; i++) {
+            templateArr += '<li class="onemonth">\
+                                <span></span>' + 
+                                    one(posts, i) + 
+                                '<div class="month">\
+                                    <span>'+ i + '월</span>\
+                                </div>\
+                            </li>'
+        }
+        templateArr += '</ul>\
+                        </div>';
+        return templateArr;
+    }
+    $.ajax({
+          method: "GET",
+          url: "/to_year" + "/" + user_id + "/" + select_value,
+          data: { select_year : $("#input_year").val() },
+          success : function(data) {
+            //   console.log(data.post[0].title);
+            //   console.log(two(data.post));
+            // alert("AJAX가 호출 되었습니다");
+            // $("#content").load("/to_year/" + select_value);
+            $("#content").html(two(data.post));
+          }
+        });
+    
+});
+    
+</script>

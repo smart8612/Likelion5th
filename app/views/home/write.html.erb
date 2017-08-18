@@ -9,7 +9,7 @@
     <!-- 년도 선택 -->
     <div class="input-field col s12">
       <select name="p_year">
-        <option value="" disabled selected> Select Year </option>
+        <option value="<%=$Current_Year%>"> <%=$Current_Year%> </option>
         <%= for i in (1900..$Current_Year).to_a.reverse do %>
           <option value="<%= i  %>"> <%= i  %>년</option>
         <% end %>
@@ -20,7 +20,7 @@
     <!-- 달 선택 -->
     <div class="input-field col s12">
       <select name="p_month">
-        <option value="" disabled selected> Select Month </option>
+        <option value="<%=$Current_Month%>"> <%=$Current_Month%> </option>
         <%= for i in 1..12 do %>
           <option value="<%= i  %>"> <%= i  %>월</option>
         <% end %>
@@ -31,7 +31,7 @@
     <!-- 일 선택 -->
     <div class="input-field col s12">
       <select name="p_day">
-        <option value="" disabled selected> Select Date </option>
+        <option value="<%=$Current_Day%>"> <%=$Current_Day%> </option>
         <%= for i in 1..31 do %>
           <option value="<%= i  %>"> <%= i  %>일</option>
         <% end %>
@@ -71,6 +71,11 @@
     <label for="exampleInputPassword1"> 제목 </label>
     <input type="text" class="form-control" name="input_title" id="title" placeholder="제목을 입력하세요">
   </div>
+  <!-- grading-->
+  <div class="form-group">
+    <label for="exampleInputPassword1"> rating </label>
+    <input type="text" class="form-control" name="input_grade" id="title" value="0.5" placeholder="점수를 입력하세요">
+  </div>
   <!-- 파일 첨부 -->
   
   <div class="file-field input-field">
@@ -87,7 +92,7 @@
   <!-- 본문 입력란 -->
   <div class="form-group">
     <label for="exampleInputPassword1"> 본문 </label>
-    <textarea class="form-control" name="input_content" rows="5" id="comment" placeholder="내용을 입력하세요" style="height:400px;"></textarea>
+    <textarea class="form-control post_content" name="input_content" rows="5" id="comment" placeholder="내용을 입력하세요" style="height:400px;"></textarea>
   </div>
   
   <!------------------------------------------------------------------------------------------>
@@ -156,5 +161,6 @@
       }
     })
   })
- 
+  
+
 </script>

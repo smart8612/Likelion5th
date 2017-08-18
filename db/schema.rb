@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(version: 20170815152418) do
 
   create_table "comments", force: :cascade do |t|
+    t.string   "image"
     t.text     "content"
     t.string   "editor"
     t.integer  "post_id"

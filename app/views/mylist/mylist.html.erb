@@ -1,19 +1,21 @@
-
+<div class="container">
 <!--리스트 페이지-->
 <div id="put_mainProfile"></div>
 <!--년도 배너-->
 <h1><%= $Current_Year %>년, 성취도 <%= $achivement_percent %>%</h1>
+</div>
 
+<input type="hidden" id="user_link" value="/user_id/<%= current_user.id %>"
 <hr>
 
         <!---------------------------------------------------------------------------------->
 <div class="container">
   <!-- 입력창 (프론트엔드 적용 완료) -->
   <div class="mylist_new">
-    <form action="/mylist_model" method="POST">
+    <form id="form1" data-remote="true">
       <label for="goal_input"> </label>
       <!-- 메인 목표 입력창 -->
-      <input type="text" class="mylist_goal" name="goal" placeholder="메인 목표를 추가해주세요!" style="width:800px">
+      <input type="text" class="mylist_goal" name="goal" placeholder="메인 목표를 추가해주세요!" style="width:700px">
       <!-- '올해의 목표입니까?' 체크박스-->
       <input type="checkbox" name="now_year" class="filled-in" id="filled-in-box" value="true" />
       <label for="filled-in-box"> 올해의 목표입니까? </label> &nbsp; &nbsp;
@@ -31,13 +33,19 @@
         <h5> &nbsp;
           
           <!--mylist 달성여부 -->
-          <% if m.complete==true %>
-            <% puts %>
-            <i class="small material-icons"> check_box </i>
-          <% else puts %>
-            <i class="small material-icons"> check_box_outline_blank </i>
-          <% end %>
-          
+          <div class="btn_mylist_complete" style="float:left;">
+            <% if m.complete==true %>
+              <!-- 달성 취소 버튼 -->
+              <form action="/mylist_complete/<%= m.id%>" method="POST" >
+                <button type="submit" name="complete" class="complete_button btn-floating btn-mini waves-effect waves-light waves-mint" value="false"><i class="material-icons">check</i></button>
+              </form>
+            <% else %>
+              <!-- 달성 완료 버튼 -->
+              <form action="/mylist_complete/<%= m.id%>" method="POST" >
+                <button type="submit" name="complete" class="complete_button btn-floating btn-miny waves-effect waves-light grey lighten-3" value="true"><i class="material-icons" style="color:black;">check</i></button>
+              </form>
+            <% end %>
+          </div>
           <!--mylist 목표 -->
           <a href="/write"> &nbsp; <%= m.goal %> </a>&nbsp;&nbsp;
           
@@ -46,19 +54,7 @@
           
         <!---------------버튼 모음 (프론트엔드 적용 완료 - 수정 기능 제외------------------->
         
-          <div class="btn_mylist_complete" style="float:right;">
-            <% if m.complete==true %>
-              <!-- 달성 취소 버튼 -->
-              <form action="/mylist_complete/<%= m.id%>" method="POST" >
-                <button type="submit" name="complete" class="complete_button btn-floating btn-mini waves-effect waves-light blue lighten-3" value="false"><i class="material-icons">check</i></button>
-              </form>
-            <% else %>
-              <!-- 달성 완료 버튼 -->
-              <form action="/mylist_complete/<%= m.id%>" method="POST" >
-                <button type="submit" name="complete" class="complete_button btn-floating btn-miny waves-effect waves-light white" value="true"><i class="material-icons" style="color:black;">check</i></button>
-              </form>
-            <% end %>
-          </div>
+        
           <div class="btn_mylist_ud" style="float:right;">
             <!-- mylist 수정 버튼 --> &nbsp; &nbsp;
             <i class="small material-icons" aria-hidden="true"> create </i>
@@ -118,7 +114,7 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <!-- 세부 계획 입력창 -->
                 <div class="row">
-                  <input type="text" class="myplan" name="plan" placeholder="계획을 추가해주세요!" style="width:800px;">
+                  <input type="text" class="myplan" name="plan" placeholder="계획을 추가해주세요!" style="width:700px;">
                   <button class="myplan_plan_button btn-floating btn-small btn-submit waves-effect waves-mint" type="submit"><i class="material-icons">add</i></button>
                 </div>
               </form>
@@ -130,6 +126,16 @@
     </div>
   </div>
 </div>
+
+<script>
+    $("#form1").submit(function(e){
+        $.ajax({
+          method: "POST",   //form에서 method
+          url: "/mylist_model", //form에서 action
+          data: { goal: $("input[name=goal]").val(), now_year: $("input[name=now_year]").val() } //전달할 데이터 body는 input중에 name이 body인 것의 값
+        })
+    })
+</script>
 
 <style>
   .mylist_new {
@@ -150,3 +156,6 @@
   }
 
 </style>
+
+
+

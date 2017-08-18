@@ -1,18 +1,24 @@
-<div class="section-parallax">
-    <div class="parallax-container">
-        <h5 class="deep-purple-text text-darken-2 center spacing">안녕하세요 버킷리스트입니다.</h5>
-      <div class="parallax"><img src="http://wfiles.brothersoft.com/n/nature_854-1280x1024.jpg"></div>
-    </div>
+<!--<div class="section-parallax">-->
+<!--    <div class="parallax-container">-->
+<!--        <h5 class="deep-purple-text text-darken-2 center spacing">안녕하세요 버킷리스트입니다.</h5>-->
+<!--      <div class="parallax"><img src="http://wfiles.brothersoft.com/n/nature_854-1280x1024.jpg"></div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<div class="main-section">
+    <p class="banner_text">세상에 똑같은 사람은 단 한 명도 없다.</p>
+    <span class="png"></span>
+    <p class="banner_subtext">세상에 나와 똑같은 삶을 사는 사람은 없습니다. 나만의 라이프 스토리를 디자인하고 기록해보세요.</p>
+    <button class="waves-effect waves-light btn-large banner_btn" href="/users/sign_in">시작하기</button>
 </div>
 
-<div class="section mt-3">
+<div class="section">
     <div class="container">
-        
         <div class="row">
-            <div class="col s12 cards-container">
+            <div class="col s12 cards-container center">
             <% @all_feeds.each_with_index do |k, index| %>
                 <a href="/post_show/<%= k.id %>"><div class = 'card mini_post' style = "background-image: url('<%= k.img.url %>'); background-color: <%=["#40bcb7", "#32928e", "#53C2BF", "#75CECB", "#90D7D5" ].sample%>" >
-                    <span class="mini_profile" style = "background-image: url('<%if k.user.profile_img.url == nil %><%= image_path('default-profile.png') %><%else%><%= k.user.profile_img.url %><%end%>')"></span>
+                    <span class="mini_profile" style = "background-color:white; background-image: url('<%if k.user.profile_img.url == nil %><%= image_path('default-profile.png') %><%else%><%= k.user.profile_img.url %><%end%>')"></span>
                     <span class="mini_name"><%= k.editor %></span>
                     <span class="date"><%= k.created_at %>에 작성됨</span><br>
                     <p class="mini_title"><%= k.title %></p><br>
@@ -23,7 +29,7 @@
                 <% if index % 3  == 0 %>
                 <% ary_idx = (0..@random_feeds.length).to_a %>
                     <a href="/post_show/<%=  @random_feeds[ary_idx[i]].id %>"><div class = 'card mini_post' style = "background-image: url('<%= @random_feeds[ary_idx[i]].img.url %>'); background-color: <%=["#40bcb7", "#32928e", "#53C2BF", "#75CECB", "#90D7D5" ].sample%>" >
-                        <span class="mini_profile" style = "background-image: url('<%if @random_feeds[ary_idx[i]].user.profile_img.url == nil %><%= image_path('default-profile.png') %><%else%><%= @random_feeds[ary_idx[i]].user.profile_img.url %><%end%>')"></span>
+                        <span class="mini_profile" style = "background-color:white; background-image: url('<%if @random_feeds[ary_idx[i]].user.profile_img.url == nil %><%= image_path('default-profile.png') %><%else%><%= @random_feeds[ary_idx[i]].user.profile_img.url %><%end%>')"></span>
                         <span class="mini_name"><%= @random_feeds[ary_idx[i]].editor %></span>
                         <span class="date"><%= @random_feeds[ary_idx[i]].created_at %>에 작성됨</span><br>
                         <p class="mini_title"><%= @random_feeds[ary_idx[i]].title %></p><br>
@@ -61,9 +67,8 @@
 <!--    </div>-->
 <!--</div>-->
 
-<script>
-    //parallax script
-    $(document).ready(function(){
-      $('.parallax').parallax();
-    });
-</script>
+<!--<script>-->
+<!--    $(document).ready(function(){-->
+<!--      $('.parallax').parallax();-->
+<!--    });-->
+<!--</script>-->
