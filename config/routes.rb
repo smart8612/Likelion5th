@@ -41,7 +41,7 @@ Rails.application.routes.draw do
   
   post '/create' => 'home#create'
   
-  get '/destroy_view/:post_id' => 'home#destroy_view' 
+  get '/destroy_view/:post_id' => 'home#destroy_view'
   #>>write end
   
   
@@ -51,7 +51,7 @@ Rails.application.routes.draw do
   
   post '/comment/:comment_id' => 'comment#comment_delete'
   
-  get '/friends' => 'social#friends'
+  get '/friends/:user_id' => 'social#friends'
   
   get '/follow/:user_id' => 'social#follow'
   

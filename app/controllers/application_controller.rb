@@ -29,6 +29,19 @@ class ApplicationController < ActionController::Base
     
   end
   
+  def year
+    @user = User.where(user_id: params[:user_id])
+    @post_u = Post.where(user_id: params[:user_id])
+    @year_a = @post_u.select(:year).map(&:year).sort.reverse
+  end
+  
+  def to_year
+    @input_year = params[:select_year]
+    @post = Post.where("user_id = ? AND year = ?", params[:user_id], params[:select_year])
+    render :json => {
+      :post => @post
+    }
+  end
   
   def ajax_json
     

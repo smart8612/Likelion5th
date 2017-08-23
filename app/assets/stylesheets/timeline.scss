@@ -1,8 +1,25 @@
-.a{
-    
+.y_post{
+    // width: 300px;
+    // height: 300px;
+    border-radius: 50%;
+    background-size: cover;
+    position: relative;
 }
+.y_title{
+    background-color: rgba(1, 1, 1, 0.5);
+    position: absolute;
+    display: inline-block;
+    padding: 4px;
+    width: 13em;
+    bottom: 30%;
+    left: 15%;
+    color: white;
+    text-align:center;
+}
+
+
 .timeline{
-    margin-left: 40px;
+    margin-left: 150px;
 }
 .timeline ul{
     list-style:none;
@@ -22,7 +39,8 @@
 }
 
 .timeline ul li{
-    margin: 80px 60px;
+    margin: 60px 60px;
+    padding: 50px;
     position: relative;
 }
 
@@ -54,15 +72,6 @@
 }
 .timeline ul li .month span{
     position: absolute;
-    left: -80px;
+    left: -70px;
     top: 40%;
-    font-size: 2em;
-    color: #ffffff;
-    background-color: #40bcb7;
-}
-.timeline .post_pic{
-    width:300px;
-    height:300px;
-    background-color:lightgrey;
-    border-radius:50%;
 }

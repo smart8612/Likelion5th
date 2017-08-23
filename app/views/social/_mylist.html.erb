@@ -23,49 +23,53 @@
          <!---------------------------------------------------------------------------------->
   
   <!-- 목록창 (프론트엔드 적용 완료) -->
-  <div class="mylist">
+    <div class="mylist">
     <div class="mylist_list">
       <% @mylist.each do |m| %>
-        <h5> &nbsp;
-          
-          <!--mylist 달성여부 -->
-          <% if m.complete==true %>
-            <% puts %>
-            <i class="small material-icons"> check_box </i>
-          <% else puts %>
-            <i class="small material-icons"> check_box_outline_blank </i>
-          <% end %>
-          
-          <!--mylist 목표 -->
-          <a href="/write"> &nbsp; <%= m.goal %> </a>&nbsp;&nbsp;
-          
-          <!-- Mylist 하위메뉴 생성 -->
-          <i class="fa fa-chevron-down hover_cursor" aria-hidden="true"></i>
-          
-        <!---------------버튼 모음 (프론트엔드 적용 완료 - 수정 기능 제외------------------->
-        
-          <div class="btn_mylist_complete" style="float:right;">
+        <div class="one_goal">
+         
+        <% if current_user == User.find(params[:user_id]) %>
+        <span class="btn_mylist_complete">
             <% if m.complete==true %>
               <!-- 달성 취소 버튼 -->
               <form action="/mylist_complete/<%= m.id%>" method="POST" >
-                <button type="submit" name="complete" class="complete_button btn-floating btn-mini waves-effect waves-light blue lighten-3" value="false"><i class="material-icons">check</i></button>
+                <button type="submit" name="complete" class="complete_button btn-floating btn-mini waves-effect waves-light waves-mint" value="false"><i class="material-icons">check</i></button>
               </form>
             <% else %>
               <!-- 달성 완료 버튼 -->
               <form action="/mylist_complete/<%= m.id%>" method="POST" >
-                <button type="submit" name="complete" class="complete_button btn-floating btn-miny waves-effect waves-light white" value="true"><i class="material-icons" style="color:black;">check</i></button>
+                <button type="submit" name="complete" class="complete_button btn-floating btn-miny waves-effect waves-light grey lighten-3" value="true"><i class="material-icons" style="color:black;">check</i></button>
               </form>
             <% end %>
-          </div>
-          <div class="btn_mylist_ud" style="float:right;">
-            <!-- mylist 수정 버튼 --> &nbsp; &nbsp;
-            <i class="small material-icons" aria-hidden="true"> create </i>
+          </span>
+        <%else%>
+          <!--mylist 달성여부 -->
+        <span class="btn_mylist_complete">
+          <% if m.complete==true %>
+            <% puts %>
+            <i class="small material-icons" style="color:#00bfa5">check_circle</i>
+          <% else puts %>
+            <i class="small material-icons"style="color:#eeeeee">check_circle</i>
+          <% end %>
+        </span>
+        <%end%>
+         <span  class="goal_title">
+            <a href="/write"> <%= m.goal %> </a>
+            <!-- Mylist 하위메뉴 생성 -->
+            <i class="fa fa-chevron-down hover_cursor" aria-hidden="true"></i>
+          </span>
+        <!---------------버튼 모음 (프론트엔드 적용 완료 - 수정 기능 제외------------------->
+        
+          <div class="btn_mylist_ud">
+            <!-- mylist 수정 버튼 -->
+            <a href="#"><i class="small material-icons" aria-hidden="true"> create </i></a>
             <!-- mylist 삭제 버튼-->
             <a href= "/mylist_delete/<%=m.id%>" aria-hidden="true" data-confirm="해당 목표를 삭제하시겠습니까?" data-method="post">
               <i class="small material-icons"> clear </i>
-            </a> &nbsp;
+            </a>
           </div>
-        </h5>
+
+        </div>
         
         <!---------------------------------------------------------------------------------->
         
@@ -128,23 +132,3 @@
     </div>
   </div>
 </div>
-
-<style>
-  .mylist_new {
-    padding-top:75px;
-  }
-  
-  .mylist {
-    padding-top:35px;
-  }
-  
-  .after{
-    display:none;
-    width:300px;
-  }
-  
-  .myplan_list{
-      display:none;
-  }
-
-</style>

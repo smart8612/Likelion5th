@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => [:home_logout]
+  before_action :mylist, only: [:mylist]
   before_action :mylist
   before_action :friends
   
@@ -112,8 +113,8 @@ class HomeController < ApplicationController
     redirect_to '/'
   end
   
-   def year
-    @user = User.find_by_id(params[:user_id])
+  def year
+    @user = User.where(user_id: params[:user_id])
     @post_u = Post.where(user_id: params[:user_id])
     @year_a = @post_u.select(:year).map(&:year).sort.reverse
   end

@@ -1,3 +1,53 @@
 // Place all the styles related to the mylist controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.mylist_new {
+    padding-top:75px;
+}
+
+.mylist {
+    padding-top:35px;    
+}
+.mylist_list .one_goal{
+    position: relative;
+    margin: 10px;
+    padding: 10px;
+}
+.mylist_list .one_goal .btn_mylist_complete{
+    position: absolute;
+    left: -5%;
+    top: -50%;
+    float: left;
+}
+.mylist_list .one_goal .goal_title{
+    position: absolute;
+    left: 30%;
+    top: 10%;
+}
+.mylist_list .one_goal .btn_mylist_ud{
+    position: absolute;
+    left: 95%;
+    top: 10%;
+    width: 7%;
+}
+.mylist_list .one_goal .btn_mylist_ud a{
+    display: inline;
+    width: 49%;
+    float: left;
+    padding-left: 20px;
+}
+.mylist_list .one_goal .btn_mylist_ud i{
+    font-size: 1em;
+}
+.after{
+    display:none;
+    width:300px;
+}
+
+.myplan_list{
+    display:none;
+}
+
+.btn_mylist_complete .btn-floating {
+
+}

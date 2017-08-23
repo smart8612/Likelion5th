@@ -1,29 +1,23 @@
-<% for i in 0..@year_a.length %>
-    <% if @year_a[i].to_i != 0%>
-        <% if @year_a[i] != @year_a[i+1]%>
-            <%= @year_a[i].to_i%>
-        <%end%>
-    <%end%>
-<%end%>
-
-        <%= @input_year%>
-<div class="input-field col s12">
-    <select name="input_year" id="year_drop">
-      <option value="<%=@year_a[0].to_i%>" disabled selected>Choose your option</option>
-      <% for i in 0..@year_a.length %>
-            <% if @year_a[i].to_i != 0%>
-                <% if @year_a[i] != @year_a[i+1]%>
-                    <option value="<%=@year_a[i].to_i%>"><%=@year_a[i].to_i%></option>
+<div class= container>
+    <div class="input-field col s12">
+        <select name="input_year" id="year_drop">
+          <option value="<%=@year_a[0].to_i%>" disabled selected>Choose your option</option>
+          <% for i in 0..@year_a.length %>
+                <% if @year_a[i].to_i != 0%>
+                    <% if @year_a[i] != @year_a[i+1]%>
+                        <option value="<%=@year_a[i].to_i%>"><%=@year_a[i].to_i%></option>
+                    <%end%>
                 <%end%>
             <%end%>
-        <%end%>
-    </select>
-    <label>연도를 선택해주세요</label>
+        </select>
+        <label>연도를 선택해주세요</label>
+    </div>
+    
+    <div id="content">
+        
+    </div>
 </div>
 
-<div id="content">
-    
-</div>
 
 <script>
 $("#year_drop").change(function() {
@@ -39,7 +33,7 @@ $("#year_drop").change(function() {
             if (posts[j].month !== i) {
                 continue;
             }
-             templatePostArr +=   '<div class="y_post" style="background-image: url(' + posts[j].img.url + '); width:' + posts[j].grade*60 + 'px; height:' + posts[j].grade*60 + 'px;  background-color: ' + random(["#40bcb7", "#32928e", "#53C2BF", "#75CECB", "#90D7D5" ])+ ' ; margin-left:' + random([0, 50, 100, 130, 150, 200 ]) + 'px"><span class="y_title" style="font-size: '+ (posts[j].grade*1.5)+12 + 'px;">' + posts[j].title + '</span></div>'; 
+             templatePostArr +=   '<div class="y_post" style="background-image: url(' + posts[j].img.url + '); width:' + posts[j].grade*60 + 'px; height:' + posts[j].grade*60 + 'px;  background-color: ' + random(["#40bcb7", "#32928e", "#53C2BF", "#75CECB", "#90D7D5" ])+ ' ; margin-left:' + random([0, 30, 50, 70, 100, 150]) + 'px"><span class="y_title" style="font-size: '+ posts[j].grade*3.2 + 'px;">' + posts[j].title + '</span></div>'; 
         }
         return templatePostArr;
         // return posts[0];

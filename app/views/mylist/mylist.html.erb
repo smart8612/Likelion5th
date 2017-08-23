@@ -30,10 +30,10 @@
   <div class="mylist">
     <div class="mylist_list">
       <% @mylist.each do |m| %>
-        <h5> &nbsp;
+        <div class="one_goal">
           
           <!--mylist 달성여부 -->
-          <div class="btn_mylist_complete" style="float:left;">
+          <span class="btn_mylist_complete">
             <% if m.complete==true %>
               <!-- 달성 취소 버튼 -->
               <form action="/mylist_complete/<%= m.id%>" method="POST" >
@@ -45,25 +45,25 @@
                 <button type="submit" name="complete" class="complete_button btn-floating btn-miny waves-effect waves-light grey lighten-3" value="true"><i class="material-icons" style="color:black;">check</i></button>
               </form>
             <% end %>
-          </div>
+          </span>
           <!--mylist 목표 -->
-          <a href="/write"> &nbsp; <%= m.goal %> </a>&nbsp;&nbsp;
-          
-          <!-- Mylist 하위메뉴 생성 -->
-          <i class="fa fa-chevron-down hover_cursor" aria-hidden="true"></i>
-          
+          <span  class="goal_title">
+            <a href="/write"> <%= m.goal %> </a>
+            <!-- Mylist 하위메뉴 생성 -->
+            <i class="fa fa-chevron-down hover_cursor" aria-hidden="true"></i>
+          </span>
         <!---------------버튼 모음 (프론트엔드 적용 완료 - 수정 기능 제외------------------->
         
-        
-          <div class="btn_mylist_ud" style="float:right;">
-            <!-- mylist 수정 버튼 --> &nbsp; &nbsp;
-            <i class="small material-icons" aria-hidden="true"> create </i>
+          <div class="btn_mylist_ud">
+            <!-- mylist 수정 버튼 -->
+            <a href="#"><i class="small material-icons" aria-hidden="true"> create </i></a>
             <!-- mylist 삭제 버튼-->
             <a href= "/mylist_delete/<%=m.id%>" aria-hidden="true" data-confirm="해당 목표를 삭제하시겠습니까?" data-method="post">
               <i class="small material-icons"> clear </i>
-            </a> &nbsp;
+            </a>
           </div>
-        </h5>
+
+        </div>
         
         <!---------------------------------------------------------------------------------->
         
@@ -136,26 +136,3 @@
         })
     })
 </script>
-
-<style>
-  .mylist_new {
-    padding-top:75px;
-  }
-  
-  .mylist {
-    padding-top:35px;
-  }
-  
-  .after{
-    display:none;
-    width:300px;
-  }
-  
-  .myplan_list{
-      display:none;
-  }
-
-</style>
-
-
-
