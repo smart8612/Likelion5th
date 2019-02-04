@@ -16,15 +16,15 @@
 
    ![1](https://github.com/smart8612/Likelion5th/blob/master/LikeLion_KMU%20국민대%20멋쟁이사자처럼%205기/1.png?raw=true)
 
-   ![2](/Users/smart8612/Desktop/Likelion5th/LikeLion_KMU 국민대 멋쟁이사자처럼 5기/2.png)
+   ![2](https://github.com/smart8612/Likelion5th/blob/master/LikeLion_KMU%20국민대%20멋쟁이사자처럼%205기/2.png?raw=true)
 
-   ![3](/Users/smart8612/Desktop/Likelion5th/LikeLion_KMU 국민대 멋쟁이사자처럼 5기/3.png)
+   ![3](https://github.com/smart8612/Likelion5th/blob/master/LikeLion_KMU%20국민대%20멋쟁이사자처럼%205기/3.png?raw=true)
 
 4. **portfolioPageProject**
 
    HTML/CSS/Javascript 그리고 Bootstrap 을 사용하여 자신을 홍보하는 포트폴리오 페이지를 만들었습니다.
 
-   ![스크린샷_2017-04-26_오후_4.47.43](/Users/smart8612/Desktop/Likelion5th/LikeLion_KMU 국민대 멋쟁이사자처럼 5기/스크린샷_2017-04-26_오후_4.47.43.png)
+   ![스크린샷_2017-04-26_오후_4.47.43](https://github.com/smart8612/Likelion5th/blob/master/LikeLion_KMU%20국민대%20멋쟁이사자처럼%205기/스크린샷_2017-04-26_오후_4.47.43.png?raw=true)
 
    5. **whenGodMadeMeGame**
 
