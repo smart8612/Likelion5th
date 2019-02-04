@@ -1,0 +1,57 @@
+<div class= "container">
+    <%= @year_a%>
+</div>
+
+
+<script>
+$("#year_drop").change(function() {
+    var select_value = $("#year_drop option:selected").val();
+    var user_id = <%= @user.id %>
+        
+    var random = function(arr) {
+        return arr[Math.floor(Math.random() * arr.length)];
+    }
+    var one = function(posts, i) {
+        var templatePostArr = '';
+        for(var j=0; j<posts.length; j++) {
+            if (posts[j].month !== i) {
+                continue;
+            }
+             templatePostArr +=   '<div class="y_post" style="background-image: url(' + posts[j].img.url + '); width:' + posts[j].grade*60 + 'px; height:' + posts[j].grade*60 + 'px;  background-color: ' + random(["#40bcb7", "#32928e", "#53C2BF", "#75CECB", "#90D7D5" ])+ ' ; margin-left:' + random([0, 30, 50, 70, 100, 150]) + 'px"><span class="y_title" style="font-size: '+ posts[j].grade*3.2 + 'px;">' + posts[j].title + '</span></div>'; 
+        }
+        return templatePostArr;
+        // return posts[0];
+    }    
+     
+    var two = function(posts) {
+        var templateArr = '<div class="timeline">\
+                                <ul>';
+        for (var i=1; i<=12; i++) {
+            templateArr += '<li class="onemonth">\
+                                <span></span>' + 
+                                    one(posts, i) + 
+                                '<div class="month">\
+                                    <span>'+ i + '월</span>\
+                                </div>\
+                            </li>'
+        }
+        templateArr += '</ul>\
+                        </div>';
+        return templateArr;
+    }
+    $.ajax({
+          method: "GET",
+          url: "/to_year" + "/" + user_id + "/" + select_value,
+          data: { select_year : $("#input_year").val() },
+          success : function(data) {
+            //   console.log(data.post[0].title);
+            //   console.log(two(data.post));
+            // alert("AJAX가 호출 되었습니다");
+            // $("#content").load("/to_year/" + select_value);
+            $("#content").html(two(data.post));
+          }
+        });
+    
+});
+    
+</script>

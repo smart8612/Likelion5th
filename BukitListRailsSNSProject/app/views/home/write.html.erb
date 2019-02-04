@@ -1,0 +1,166 @@
+<P style="LINE-HEIGHT: 80%">
+
+<form action="/create" method="POST" enctype="multipart/form-data">
+<div class = "form-whole container">
+  
+  <!-- 날짜 드롭다운 -->
+  <div class="dropdown">
+    
+    <!-- 년도 선택 -->
+    <div class="input-field col s12">
+      <select name="p_year">
+        <option value="<%=$Current_Year%>"> <%=$Current_Year%> </option>
+        <%= for i in (1900..$Current_Year).to_a.reverse do %>
+          <option value="<%= i  %>"> <%= i  %>년</option>
+        <% end %>
+      </select>
+      <label> YEAR </label>
+    </div> &nbsp &nbsp &nbsp &nbsp
+    
+    <!-- 달 선택 -->
+    <div class="input-field col s12">
+      <select name="p_month">
+        <option value="<%=$Current_Month%>"> <%=$Current_Month%> </option>
+        <%= for i in 1..12 do %>
+          <option value="<%= i  %>"> <%= i  %>월</option>
+        <% end %>
+      </select>
+      <label> MONTH </label>
+    </div> &nbsp &nbsp &nbsp &nbsp
+    
+    <!-- 일 선택 -->
+    <div class="input-field col s12">
+      <select name="p_day">
+        <option value="<%=$Current_Day%>"> <%=$Current_Day%> </option>
+        <%= for i in 1..31 do %>
+          <option value="<%= i  %>"> <%= i  %>일</option>
+        <% end %>
+      </select>
+      <label> DATE </label>
+    </div>
+  </div>
+  
+  <!------------------------------------------------------------------------------------------>
+  
+  <div class="dropdown-goal">
+    <!--  메인 목표 -->
+    <div class="input-field col s6 m6" id="main_goal">
+      <select name="mylist_dropdown" id="dropdown_menu" style="width:400px">
+        <option value="" disabled selected>Choose your option</option>
+        <option value="새로운 목표가 제목으로 들어갑니다">새 목표 입력하기</option>
+        <option value="no_goal">목표 없이 글쓰기</option>
+        <% @mylist.each do |m| %>
+          <option style="font-weight: bold" value="<%= m.goal%>"><%= m.goal%></option>
+          <% m.myplans.each do |n|%>
+          <option value="<%= n.plan%>">---<%= n.plan%></option>
+          <% end %>
+        <% end %>
+      </select>
+      <label>목표</label>
+    </div>
+    
+    <!-- 목표 없음을 선택할 시 나오는 입력창 -->
+    <div style="display:none" class="input-field-if" id="new_goal">
+      <label for="first_name"> 계획에 없던 성취인가요? </label>
+      <input name="input_new_goal" placeholder="새 목표를 입력하세요!" id="first_name" type="text" class="validate">
+    </div>
+  </div>
+  <!-- 실제 내용 입력창 -->
+  <!-- 제목 -->
+  <div class="form-group">
+    <label for="exampleInputPassword1"> 제목 </label>
+    <input type="text" class="form-control" name="input_title" id="title" placeholder="제목을 입력하세요">
+  </div>
+  <!-- grading-->
+  <div class="form-group">
+    <label for="exampleInputPassword1"> rating </label>
+    <input type="text" class="form-control" name="input_grade" id="title" value="0.5" placeholder="점수를 입력하세요">
+  </div>
+  <!-- 파일 첨부 -->
+  
+  <div class="file-field input-field">
+    <div class="btn">
+        <span>File</span>
+        <input type="file" name="imageFile" accept"image/png,image/gif,image/jpeg" multiple>
+    </div>
+    <div class="file-path-wrapper">
+        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+    </div>
+  </div>
+  
+  <!--star-rating-->
+  <!-- 본문 입력란 -->
+  <div class="form-group">
+    <label for="exampleInputPassword1"> 본문 </label>
+    <textarea class="form-control post_content" name="input_content" rows="5" id="comment" placeholder="내용을 입력하세요" style="height:400px;"></textarea>
+  </div>
+  
+  <!------------------------------------------------------------------------------------------>
+  
+  <!-- 하단 footer -->
+  <div class="footer">
+    <!-- 리셋 버튼 -->
+    <button type="reset" class="btn btn-reset"> Reset </button>
+    <div class="footer-right">
+      <!-- 목표 달성 체크박스 -->
+      <input type="checkbox" class="filled-in-3" id="filled-in-box-3" value="true"/>
+      <label for="filled-in-box-3"> 목표 달성! &nbsp; </label>
+      <!-- 저장 버튼 -->
+      <button type="submit" class="btn btn-default"> 저장 </button>
+    </div>
+  </div>
+</div>
+</form>
+
+  <!-------------------------------------------------------------------------------------------->
+
+<style>
+
+  .form-whole {
+    padding-top:30px;
+  }
+  
+  .dropdown {
+    display: flex;
+  } /* 날짜 드롭다운 */
+  
+  .dropdown-goal {
+    display: inline-block;
+    width: 45%;
+  }
+
+  .footer {
+    padding-bottom: 150px;
+  }
+  
+  
+  .footer-right {
+    float: right;
+  }
+</style>
+
+<script>
+
+  var hw = document.getElementById('dropdown_menu');
+  
+  $( document ).ready(function() {
+  $('select').not('.disabled').material_select();
+  $('#dropdown_menu').on('change', function(e) {
+    document.getElementById('title').placeholder = hw.value
+  });
+  
+});
+  
+  $(function() {
+      $('#dropdown_menu').change(function() {
+      if(this.value === '새로운 목표가 제목으로 들어갑니다') {
+          $('#new_goal').show(300);
+      }
+      else{
+        $('#new_goal').hide(300);
+      }
+    })
+  })
+  
+
+</script>

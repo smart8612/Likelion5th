@@ -1,0 +1,61 @@
+<div class="container">
+
+  <h2>Edit <%= resource_name.to_s.humanize %></h2>
+  <h6 style="font-family:'Nanum Gothic'; font-size:12px;margin-top:-15px;margin-bottom:25px;">
+    개인정보를 수정하시겠어요?
+  </h6>
+  
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= f.error_notification %>
+  
+    <div class="form-inputs">
+      <%= f.input :email, required: true, autofocus: true %>
+      
+      <%= f.label :name %><br>
+      <%= f.text_field :name, autofocus: true %><br>
+  
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+      <% end %>
+      
+      <!-- %= f.input :gender,  :collection => ["Male","Female"], 
+                        :as => :radio_buttons, 
+                        :checked => current_user.gender,
+                        :item_wrapper_class => 'inline',
+                        :label => "Gender" % -->
+                        
+      <%= f.label :date_of_birth %><br>
+      <%= f.date_select :date_of_birth, :start_year=>1900, :end_year=>2017 %>
+
+      <%= f.input :password, autocomplete: "off", hint: "Type new one IF YOU WANT TO CHANGE!", required: false %> <br>
+      <%= f.input :password_confirmation, required: false %>
+      <%= f.input :current_password, hint: "we need YOUR CURRENT PASSWORD to confirm your changes", required: true %> <br>
+    </div>
+  
+    <div class="form-actions">
+      <%= f.button :submit, "Update" %>
+    </div>
+  <% end %> <br>
+  
+  <h3>Cancel my account</h3>
+  
+  <p style="margin-top:-15px;"> <span style="font-family:'Nanum Gothic'; font-size:12px;margin-top:-5px;margin-bottom:15px;"> 서비스가 불만족스러우셨나요? </span> <br>
+  <br> ▶ <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
+  </p><br>
+  <hr><br>
+  ▶ <%= link_to "Back", :back %>
+</div>
+
+<style>
+  .container {
+    padding-right:150px;
+    padding-left:150px;
+    padding-top:30px;
+    margin-top:40px;
+    padding-bottom:80px;
+    margin-bottom:60px;
+    background-color:#e0e0e0;
+    border-radius:10px;
+    height:160%;
+  }
+</style>

@@ -1,0 +1,48 @@
+<body>
+  <div class="container">
+    <div>
+      <h2>상태메시지를 수정하는 페이지 입니다.</h2>
+      
+      <form action="/intro_edit/<%= current_user.id %>" method="Post">
+        <div class="form-group">
+          <label> 상태메시지 </label>
+          <input type="text" class="form-control" name="input_intro">
+          <button type="submit" class="waves-effect waves-light btn"> 수정하기 </button>
+        </div>
+      </form>
+    </div>
+    
+    
+    <div>
+      <h3>프로필 이미지를 <br> 업로드 하세요</h3>
+      <form action="/img_edit/<%= current_user.id %>" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+          <label> 프로필 이미지 </label>
+          <input type="file" name="input_file" accept"image/png,image/gif,image/jpeg" multiple>
+          <input type="submit">
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+
+
+<script>
+// 태그 테스트중
+  $('.input_intro_tag .chips').material_chip();
+
+</script>
+
+<style>
+  .container {
+    padding-right:150px;
+    padding-left:150px;
+    padding-top:30px;
+    margin-top:40px;
+    padding-bottom:120px;
+    margin-bottom:60px;
+    background-color:#e0e0e0;
+    border-radius:10px;
+    height:500px;
+  }
+  

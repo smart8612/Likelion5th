@@ -1,0 +1,33 @@
+<div class="container">
+  <h2>Forgot your password?</h2>
+  <h6 style="font-family:'Nanum Gothic'; font-size:12px;margin-top:-10px;margin-bottom:15px;">
+    비밀번호를 잊어버리셨나요? 이메일로 새 비밀번호를 발송해 드립니다!
+  </h6>
+  
+  <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <%= f.error_notification %>
+  
+    <div class="form-inputs">
+      <%= f.input :email, required: true, autofocus: true %>
+    </div>
+  
+    <div class="form-actions">
+      <%= f.button :submit, "Send me reset password instructions" %>
+    </div>
+  <% end %>
+  <br>
+  <%= render "devise/shared/links" %>
+</div>
+<style>
+  .container {
+    padding-right:150px;
+    padding-left:150px;
+    padding-top:30px;
+    margin-top:40px;
+    padding-bottom:120px;
+    margin-bottom:60px;
+    background-color:#e0e0e0;
+    border-radius:10px;
+    height:450px;
+  }
+</style>

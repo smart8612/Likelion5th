@@ -1,0 +1,36 @@
+<div class="container">
+
+  <h5 style="font-family:'Verdana';">Change your password</h5>
+  
+  <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+    <%= f.error_notification %>
+  
+    <%= f.input :reset_password_token, as: :hidden %>
+    <%= f.full_error :reset_password_token %>
+  
+    <div class="form-inputs">
+      <%= f.input :password, label: "New password", required: true, autofocus: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+      <%= f.input :password_confirmation, label: "Confirm your new password", required: true %>
+    </div>
+  
+    <div class="form-actions">
+      <%= f.button :submit, "Change my password" %>
+    </div>
+  <% end %>
+  
+  <%= render "devise/shared/links" %>
+</div>
+
+<style>
+  .container {
+    padding-right:150px;
+    padding-left:150px;
+    padding-top:30px;
+    margin-top:40px;
+    padding-bottom:120px;
+    margin-bottom:60px;
+    background-color:#e0e0e0;
+    border-radius:10px;
+    height:500px;
+  }
+</style>

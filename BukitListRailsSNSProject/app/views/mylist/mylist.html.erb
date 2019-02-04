@@ -1,0 +1,138 @@
+<div class="container">
+<!--리스트 페이지-->
+<div id="put_mainProfile"></div>
+<!--년도 배너-->
+<h1><%= $Current_Year %>년, 성취도 <%= $achivement_percent %>%</h1>
+</div>
+
+<input type="hidden" id="user_link" value="/user_id/<%= current_user.id %>"
+<hr>
+
+        <!---------------------------------------------------------------------------------->
+<div class="container">
+  <!-- 입력창 (프론트엔드 적용 완료) -->
+  <div class="mylist_new">
+    <form id="form1" data-remote="true">
+      <label for="goal_input"> </label>
+      <!-- 메인 목표 입력창 -->
+      <input type="text" class="mylist_goal" name="goal" placeholder="메인 목표를 추가해주세요!" style="width:700px">
+      <!-- '올해의 목표입니까?' 체크박스-->
+      <input type="checkbox" name="now_year" class="filled-in" id="filled-in-box" value="true" />
+      <label for="filled-in-box"> 올해의 목표입니까? </label> &nbsp; &nbsp;
+      <!-- 추가하기 버튼 -->
+      <button class="btn-floating btn-small btn-submit waves-effect waves-mint" type="submit"><i class="material-icons">add</i></button>
+    </form>
+  </div>
+  
+         <!---------------------------------------------------------------------------------->
+  
+  <!-- 목록창 (프론트엔드 적용 완료) -->
+  <div class="mylist">
+    <div class="mylist_list">
+      <% @mylist.each do |m| %>
+        <div class="one_goal">
+          
+          <!--mylist 달성여부 -->
+          <span class="btn_mylist_complete">
+            <% if m.complete==true %>
+              <!-- 달성 취소 버튼 -->
+              <form action="/mylist_complete/<%= m.id%>" method="POST" >
+                <button type="submit" name="complete" class="complete_button btn-floating btn-mini waves-effect waves-light waves-mint" value="false"><i class="material-icons">check</i></button>
+              </form>
+            <% else %>
+              <!-- 달성 완료 버튼 -->
+              <form action="/mylist_complete/<%= m.id%>" method="POST" >
+                <button type="submit" name="complete" class="complete_button btn-floating btn-miny waves-effect waves-light grey lighten-3" value="true"><i class="material-icons" style="color:black;">check</i></button>
+              </form>
+            <% end %>
+          </span>
+          <!--mylist 목표 -->
+          <span  class="goal_title">
+            <a href="/write"> <%= m.goal %> </a>
+            <!-- Mylist 하위메뉴 생성 -->
+            <i class="fa fa-chevron-down hover_cursor" aria-hidden="true"></i>
+          </span>
+        <!---------------버튼 모음 (프론트엔드 적용 완료 - 수정 기능 제외------------------->
+        
+          <div class="btn_mylist_ud">
+            <!-- mylist 수정 버튼 -->
+            <a href="#"><i class="small material-icons" aria-hidden="true"> create </i></a>
+            <!-- mylist 삭제 버튼-->
+            <a href= "/mylist_delete/<%=m.id%>" aria-hidden="true" data-confirm="해당 목표를 삭제하시겠습니까?" data-method="post">
+              <i class="small material-icons"> clear </i>
+            </a>
+          </div>
+
+        </div>
+        
+        <!---------------------------------------------------------------------------------->
+        
+        <div class="myplan_list">
+          <% m.myplans.each do |f|%>
+          
+              <!--mylist 달성여부 체크글리피콘-->
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <% if f.sub_complete==true %>
+                <% puts %>
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                <%else puts%><i class="fa fa-minus" aria-hidden="true"></i>
+              <% end %>
+              <!--myplan 계획-->
+              &nbsp;<%= f.plan %> &nbsp; &nbsp;
+             
+              <!--*수정중*sub_complete 버튼-->
+              <span class="btn btn_myplan_sub_complete">
+                 
+              <% if f.sub_complete==true %>
+                  <form action="/myplan_sub_complete/<%= f.id%>" method="POST" >
+                    <label class="sub_complete_button">
+                      <button type='submit' name="sub_complete" value="false"> 달성취소!</button>
+      
+                    </label>
+                  </form>
+              <% else %>
+                  <form action="/myplan_sub_complete/<%= f.id%>" method="POST" >
+                    <label class="sub_complete_button">
+                       <i type="submi" class="small material-icons"> assignment_turned_in </i>
+                    </label>
+                  </form>
+              <% end %>
+              </span>
+              <!--*수정중 라우트랑 컨트롤러랑 *sub_complete 버튼-->
+              
+              <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;
+              <a href= "/myplan_delete/<%=f.id%>"class="fa fa-trash" aria-hidden="true" data-confirm="해당 계획을 삭제하시겠습니까?" data-method="post"></a>
+              <br>
+              
+          <%end%>
+          <br>
+          <div class="add myplan">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="myplan_plus hover_cursor"><i class="fa fa-plus" aria-hidden="true"></i>add plan</span>
+              <form action ="/myplan_model" method="POST" class="after" id="after">
+                <input type="hidden" name="mylist_id" value="<%=m.id%>">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <!-- 세부 계획 입력창 -->
+                <div class="row">
+                  <input type="text" class="myplan" name="plan" placeholder="계획을 추가해주세요!" style="width:700px;">
+                  <button class="myplan_plan_button btn-floating btn-small btn-submit waves-effect waves-mint" type="submit"><i class="material-icons">add</i></button>
+                </div>
+              </form>
+          </div>
+  
+        </div>
+        <hr>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<script>
+    $("#form1").submit(function(e){
+        $.ajax({
+          method: "POST",   //form에서 method
+          url: "/mylist_model", //form에서 action
+          data: { goal: $("input[name=goal]").val(), now_year: $("input[name=now_year]").val() } //전달할 데이터 body는 input중에 name이 body인 것의 값
+        })
+    })
+</script>
