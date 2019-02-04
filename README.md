@@ -30,6 +30,6 @@
 
       당시 유행했던 신이 나를 만들때 게임을 Rails 에서 돌아가도록 제작했습니다.  이름만 넣고 돌리면 결과가 나옵니다.
 
-      ![스크린샷 2017-04-06 오후 7.22.41](https://github.com/smart8612/Likelion5th/blob/master/LikeLion_KMU%20국민대%20멋쟁이사자처럼%205기/스크린샷 2017-04-06 오후 7.22.41.png?raw=true)
+      ![스크린샷 2017-04-06 오후 7.22.41](https://github.com/smart8612/Likelion5th/blob/master/LikeLion_KMU%20국민대%20멋쟁이사자처럼%205기/스크린샷_2017-04-06_오후_7.22.41.png?raw=true)
 
-      ![스크린샷 2017-04-06 오후 7.22.53](https://github.com/smart8612/Likelion5th/blob/master/LikeLion_KMU%20국민대%20멋쟁이사자처럼%205기/스크린샷 2017-04-06 오후 7.22.53.png?raw=true)
+      ![스크린샷 2017-04-06 오후 7.22.53](https://github.com/smart8612/Likelion5th/blob/master/LikeLion_KMU%20국민대%20멋쟁이사자처럼%205기/스크린샷_2017-04-06_오후_7.22.53.png?raw=true)
