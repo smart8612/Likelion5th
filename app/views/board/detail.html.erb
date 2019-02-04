@@ -1,0 +1,22 @@
+<div id="donggukmap">
+    <div class="container nav">
+        <a href="/"><button id="back" class="btn btn-default" type="submit">BACK</button></a>
+    </div>
+    <div class="fullcard">
+        <form action = "/save" method="POST">
+            <div class="card-block">
+                <form action="/" method="POST">
+                    * 날짜 : <%= @card.bookdate %><br>
+                    * 시간 : <%= @card.booktime %><br>
+                    * 장소 : <%= @card.bookplace %><br>
+                    * 인원 : <%= @card.bookpeople %><br>
+                    * 내용 : <%= @card.booktext %><br>
+                    * 해시태그 : <%= @card.hashtag %><br>
+                    * 카테고리 : <%= @card.category %><br>
+                    * 건물이름 : <%= @card.building_name %><br>
+                    <input type="submit" style="text-align:center" value="JOIN"></button>
+                </form>
+            </div>
+        </form>
+    </div>
+</div>

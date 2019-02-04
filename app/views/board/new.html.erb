@@ -1,0 +1,32 @@
+<div id="donggukmap">
+    <div class="container nav">
+        <a href="/"><button id="back" class="btn btn-default" type="submit">BACK</button></a>
+    </div>
+    <div class="fullcard">
+        <form action = "/save" method="POST">
+            <div class="card-block">
+                <form action="/save" method="POST">
+                    * 날짜 : <input type="date" name="inputDate"><br>
+                    * 시간 : <input type="time" name="inputTime"><br>
+                    * 장소 : <input type="text" name="inputPlace"><br>
+                    * 인원 : <input type="text" name="inputPeople"><br>
+                    * 소개 : <input type="text" name="inputText"><br>
+                    * 해시태그 : <input type="text" name="inputHash" value="#"><br>
+                    * 카테고리 :  <select name="inputCategory">
+                                <option selected>CATEGORY</option>
+                                <option>음식</option>
+                                <option>스포츠</option>
+                                <option>스터디</option>
+                                </select><br>
+                    * 건물 이름 : <select name="inputBuilding">
+                                <option selected>PLACE</option>
+                                <option>신공학관</option>
+                                <option>중앙도서관</option>
+                                <option>사회과학관</option>
+                                </select><br>
+                    <input type="submit" style="text-align:center" value="저장하기"></button>
+                </form>
+            </div>
+        </form>
+    </div>
+</div>

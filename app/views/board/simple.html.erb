@@ -1,0 +1,30 @@
+<div id="donggukmap">
+    <!--new button-->
+    <div class="container nav">
+        <a href="/"><button id="back" class="btn btn-default" type="submit">BACK</button></a>
+        <!--new button-->
+        <a href="/new"><button id="new" class="btn btn-default" type="submit">NEW</button></a>
+    </div>
+    <div class="fullcard">
+        <div class="container">
+            <div class="row">
+                <% @posts.each do |post|%>
+                <div class="col-xs-6 col-md-3">
+                    <div class="card">
+                        <div class="w-50 my-2">
+                            <div>
+                                <img class="card-img-top" src="/pep1.png" alt="Card image cap" style="width: 20%">
+                                <img class="card-img-top" src="/pep2.png" alt="Card image cap" style="width: 20%">
+                                <img class="card-img-top" src="/pep3.png" alt="Card image cap" style="width: 20%">
+                            </div>
+                                <p class="font-weight-bold"><%= post.hashtag %></p>
+                            <a href="/detail/<%= post.id %>" class="btn btn-primary">detail</a>
+                        </div>
+                    </div>
+                </div>
+                <% end %>
+            </div>
+        </div>
+        
+    </div>
+</div>

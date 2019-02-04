@@ -1,0 +1,79 @@
+html, body{
+  height:100%;
+}
+
+#donggukmap{
+  position: relative;
+  top:10%;
+  height:70%;
+  width:100%;
+  background-image: url(donggukmap.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+
+#donggukmap2{
+  position: relative;
+  top:10%;
+  height:70%;
+  width:100%;
+  background-image: url(donggukmap2.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+
+.container.nav{
+  top: 15px;
+  text-align: right;
+}
+
+#singong{
+  top:4.9%;
+  left:51.3%;
+}
+#socialscience{
+  top:46.5%;
+  left:35.2%;
+}
+
+.gps{
+  background-image: url(spot2.png);
+  position: relative;
+  width:3%;
+  height:5%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+
+.card{
+  border: 1px solid black;
+  padding: 10px;
+  margin-top: 15px;
+  text-align : center;
+  height: 30%;
+}
+
+.fullcard{
+  width:100%;
+  height:100%;
+  background-color: #ffffff;
+  opacity: 0.9;
+}
+
+.card-block{
+  position: absolute;
+  top: 30%;
+  left: 40%;
+  width: 60%;
+  height: 100%;
+  font-weight: bold;
+  text-align: left;
+  font-style: italic;
+}
+
+.row{
+  margin-bottom: 10px;
+}
