@@ -9,7 +9,7 @@
 2. **DonggukUnivOnlineMapProject**
 
    동국대학교에서 진행되었던 연합 해커톤에서 개발한 웹서비스입니다. 동국대학교 지도 형태의 타임라인에서 자신이 하고싶은 일과 비슷한 것을 원하는 상대를 매칭시켜줍니다.
-
+https://github.com/smart8612/Likelion5th/blob/master/LikeLion_KMU%20국민대%20멋쟁이사자처럼%205기/스크린샷_2017-04-06_오후_7.22.41.png?raw=true
 3. **Ruby On Rails Practice 1,2,3**
 
    웹 프레임워크인 Ruby On Rails 를 학습하는 과정이 담겨있습니다. MVC 패턴, 관계형DB를 활용한  CRUD 게시판, 댓글 기능, 사용자 로그인 기능 구현이 포함되어있습니다.
@@ -30,6 +30,6 @@
 
       당시 유행했던 신이 나를 만들때 게임을 Rails 에서 돌아가도록 제작했습니다.  이름만 넣고 돌리면 결과가 나옵니다.
 
-      ![스크린샷 2017-04-06 오후 7.22.41](https://github.com/smart8612/Likelion5th/blob/master/LikeLion_KMU%20국민대%20멋쟁이사자처럼%205기/스크린샷_2017-04-06_오후_7.22.41.png?raw=true)
+      ![스크린샷 2017-04-06 오후 7.22.41](https://github.com/smart8612/Likelion5th/blob/master/LikeLion_KMU%20국민대%20멋쟁이사자처럼%205기/스크린샷%202017-04-06%20오후%207.22.41.png?raw=true)
 
-      ![스크린샷 2017-04-06 오후 7.22.53](https://github.com/smart8612/Likelion5th/blob/master/LikeLion_KMU%20국민대%20멋쟁이사자처럼%205기/스크린샷_2017-04-06_오후_7.22.53.png?raw=true)
+      ![스크린샷 2017-04-06 오후 7.22.53](https://github.com/smart8612/Likelion5th/blob/master/LikeLion_KMU%20국민대%20멋쟁이사자처럼%205기/스크린샷%202017-04-06%20오후%207.22.53.png?raw=true)
