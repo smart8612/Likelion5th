@@ -1,0 +1,10 @@
+<h1>정택의 게시판</h1>
+<hr>
+<h3>수정 하기</h3>
+
+<form action="/update/<%= @upd_board.id %>" method="POST">
+    제목       : <input type="text" name="inputTitle" value="<%= @upd_board.title %>"><br><br>
+    작성자     : <input type="text" name="inputEditor" value="<%= @upd_board.editor %>"><br><br>
+    내용       : <input type="text" name="inputContent" value="<%= @upd_board.content %>"><br><br>
+    <button type="submit">저장하기</button>
+</form>
