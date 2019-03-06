@@ -5,6 +5,8 @@
 1. **BukitListRailsSNSProject**
 
    2017년 여름에 KBS 아트홀에서 진행되었던 중앙해커톤에서 개발한 소셜네트워크 서비스입니다. 자신의 버킷리스트를 서비스에 정의하고 버킷리스트를 성취할때마다 포스팅을 할 수 있도록 설계되었습니다.
+   ![1](https://github.com/smart8612/Likelion5th/blob/master/LikeLion_KMU%20국민대%20멋쟁이사자처럼%205기/Screen%20Shot%202019-03-06%20at%202.51.39%20PM.png?raw=true)
+   ![1](https://github.com/smart8612/Likelion5th/blob/master/LikeLion_KMU%20국민대%20멋쟁이사자처럼%205기/bklistteam2.jpg?raw=true)
 
 2. **DonggukUnivOnlineMapProject**
 
